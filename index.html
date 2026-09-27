@@ -4,114 +4,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GW PATHSHALA VIP - Guild Glory Bot</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>GW PATHSHALA VIP</title>
 
 <style>
-
-:root{
-    --primary:#00ff66;
-    --primary-dark:#00b84a;
-    --bg:#030712;
-    --card:#07111c;
-    --card2:#0a1622;
-    --border:#123323;
-    --text:#eafff2;
-    --text-muted:#7f9689;
-    --danger:#ff3d3d;
-}
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Orbitron',sans-serif;
+    background:#030712;
+    color:white;
+    font-family:Arial,sans-serif;
     min-height:100vh;
-    overflow-x:hidden;
 }
-
-/* MATRIX BACKGROUND */
-
-#matrix{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:-2;
-    opacity:.16;
-}
-
-/* MAIN */
 
 .container{
     width:100%;
-    max-width:600px;
+    max-width:500px;
     margin:auto;
-    padding:15px;
+    padding:20px;
 }
-
-/* HEADER */
 
 .header{
     text-align:center;
-    padding:20px 10px 15px;
+    padding:20px 0;
 }
 
 .logo{
     width:65px;
     height:65px;
     margin:auto;
-    border:2px solid var(--primary);
+    border:2px solid #00ff66;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:var(--primary);
+    color:#00ff66;
     font-size:28px;
-    box-shadow:
-        0 0 10px var(--primary),
-        inset 0 0 10px rgba(0,255,102,.2);
+    box-shadow:0 0 20px #00ff6655;
 }
 
 .header h1{
+    color:#00ff66;
     margin-top:12px;
-    font-size:22px;
-    color:var(--primary);
-    letter-spacing:2px;
-    text-shadow:0 0 12px rgba(0,255,102,.6);
+    font-size:23px;
 }
 
 .header p{
-    margin-top:7px;
-    color:var(--text-muted);
-    font-size:10px;
-    letter-spacing:1px;
+    color:#789;
+    margin-top:6px;
+    font-size:11px;
 }
-
-/* PROGRESS */
 
 .progress{
     display:flex;
     justify-content:center;
     align-items:center;
-    margin:10px 0 20px;
-}
-
-.progress-item{
-    display:flex;
-    align-items:center;
+    margin:15px 0 20px;
 }
 
 .circle{
@@ -122,37 +73,32 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:11px;
-    color:var(--text-muted);
-    background:#06100b;
+    font-size:12px;
+    color:#718477;
 }
 
 .circle.active{
+    background:#00ff66;
     color:#000;
-    background:var(--primary);
-    border-color:var(--primary);
-    box-shadow:0 0 12px rgba(0,255,102,.6);
+    border-color:#00ff66;
 }
 
 .line{
-    width:45px;
-    height:1px;
+    width:35px;
+    height:2px;
     background:#294435;
 }
 
 .line.active{
-    background:var(--primary);
-    box-shadow:0 0 7px rgba(0,255,102,.5);
+    background:#00ff66;
 }
 
-/* CARD */
-
 .card{
-    background:rgba(7,17,28,.95);
-    border:1px solid var(--border);
+    background:#07111c;
+    border:1px solid #123323;
     border-radius:15px;
     padding:20px;
-    box-shadow:0 0 30px rgba(0,255,102,.04);
+    box-shadow:0 0 30px #00ff6608;
 }
 
 .step{
@@ -163,95 +109,66 @@ body{
     display:block;
 }
 
-/* TITLES */
-
-.step-title{
+.title{
     text-align:center;
     margin-bottom:20px;
 }
 
-.step-title h2{
-    font-size:18px;
-    color:var(--primary);
+.title h2{
+    color:#00ff66;
+    font-size:19px;
 }
 
-.step-title p{
-    font-size:9px;
-    color:var(--text-muted);
-    margin-top:7px;
-}
-
-/* FORM */
-
-.form-group{
-    margin-bottom:16px;
-}
-
-.form-group label{
-    display:block;
+.title p{
+    color:#789;
     font-size:10px;
-    margin-bottom:7px;
-    color:#a9bdb2;
+    margin-top:6px;
 }
 
-input,
-select{
+label{
+    display:block;
+    color:#b8c8be;
+    font-size:11px;
+    margin-bottom:7px;
+}
+
+input,select{
     width:100%;
     height:45px;
-    padding:0 13px;
+    border:1px solid #234331;
     border-radius:8px;
-    border:1px solid #1d3a2a;
-    outline:none;
     background:#030a10;
-    color:#fff;
-    font-family:'Orbitron',sans-serif;
-    font-size:11px;
+    color:white;
+    padding:0 12px;
+    outline:none;
+    margin-bottom:15px;
 }
 
-input:focus,
-select:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 8px rgba(0,255,102,.15);
+input:focus,select:focus{
+    border-color:#00ff66;
 }
 
-select option{
-    background:#07111c;
-}
-
-/* BUTTON */
-
-.btn{
+button{
     width:100%;
-    min-height:46px;
-    border:none;
+    height:46px;
+    border:0;
     border-radius:8px;
-    background:var(--primary);
-    color:#001c0b;
-    font-family:'Orbitron',sans-serif;
-    font-weight:800;
-    font-size:11px;
+    background:#00ff66;
+    color:#001b09;
+    font-weight:bold;
     cursor:pointer;
-    transition:.2s;
-    margin-top:7px;
+    margin-top:8px;
 }
 
-.btn:hover{
-    background:#39ff88;
-    box-shadow:0 0 18px rgba(0,255,102,.3);
-    transform:translateY(-1px);
+button:hover{
+    box-shadow:0 0 18px #00ff6655;
 }
 
-.btn:active{
-    transform:scale(.98);
-}
-
-.btn-secondary{
+.back{
     background:#0b1b13;
-    color:var(--primary);
-    border:1px solid #174d2d;
+    color:#00ff66;
+    border:1px solid #214c31;
 }
-
-/* BOT CARDS */
 
 .bot-grid{
     display:grid;
@@ -259,290 +176,216 @@ select option{
     gap:12px;
 }
 
-.bot-card{
-    padding:15px;
-    border:1px solid #173425;
+.bot{
+    border:1px solid #193b27;
     border-radius:12px;
-    background:#050d14;
-    cursor:pointer;
-    transition:.2s;
+    padding:18px 10px;
     text-align:center;
+    background:#040b10;
+    cursor:pointer;
 }
 
-.bot-card:hover{
-    border-color:var(--primary);
-}
-
-.bot-card.selected{
-    border-color:var(--primary);
-    box-shadow:
-        0 0 15px rgba(0,255,102,.12),
-        inset 0 0 12px rgba(0,255,102,.04);
+.bot.selected{
+    border-color:#00ff66;
+    box-shadow:0 0 15px #00ff6622;
 }
 
 .bot-icon{
-    width:48px;
-    height:48px;
-    margin:0 auto 10px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid var(--primary);
-    color:var(--primary);
-    font-size:20px;
+    font-size:28px;
+    margin-bottom:10px;
 }
 
-.bot-card h3{
+.bot h3{
     font-size:12px;
-    color:#fff;
 }
 
 .price{
+    color:#00ff66;
+    font-size:20px;
+    font-weight:bold;
     margin-top:8px;
-    font-size:18px;
-    color:var(--primary);
-    font-weight:800;
 }
 
-.bot-card p{
-    margin-top:5px;
+.bot p{
+    color:#789;
     font-size:8px;
-    color:var(--text-muted);
+    margin-top:5px;
 }
 
-/* QR */
+.payment-info{
+    text-align:center;
+    background:#040b10;
+    border:1px solid #193b27;
+    border-radius:9px;
+    padding:12px;
+    margin-bottom:15px;
+    font-size:11px;
+    line-height:1.8;
+}
+
+.payment-info span{
+    color:#00ff66;
+}
 
 .qr-box{
-    width:220px;
+    width:230px;
     max-width:100%;
-    margin:0 auto 20px;
+    margin:0 auto 18px;
     padding:10px;
-    background:#fff;
+    background:white;
     border-radius:10px;
-    text-align:center;
 }
 
 .qr-box img{
     display:block;
     width:100%;
     height:auto;
-    border-radius:4px;
 }
 
-/* PAYMENT INFO */
-
-.payment-info{
-    border:1px solid #173425;
-    background:#050d14;
-    border-radius:10px;
-    padding:12px;
-    margin-bottom:16px;
+.scan-text{
+    color:#000;
     text-align:center;
+    font-weight:bold;
+    font-size:11px;
+    margin-top:7px;
 }
 
-.payment-info p{
-    font-size:9px;
-    color:var(--text-muted);
-    line-height:1.7;
-}
-
-.payment-info strong{
-    color:var(--primary);
-}
-
-/* UPLOAD */
-
-.upload-box{
-    min-height:85px;
-    border:1px dashed #28533a;
+.upload{
+    border:1px dashed #315b41;
     border-radius:10px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    padding:22px 10px;
+    text-align:center;
     cursor:pointer;
-    background:#040b10;
-    transition:.2s;
+    margin-bottom:12px;
 }
 
-.upload-box:hover{
-    border-color:var(--primary);
-    background:#06120c;
+.upload:hover{
+    border-color:#00ff66;
 }
 
-.upload-box p{
-    margin:0;
+.upload-icon{
+    font-size:25px;
+    color:#00ff66;
 }
 
-/* TERMINAL */
+.upload-text{
+    color:#789;
+    font-size:10px;
+    margin-top:8px;
+}
 
 .terminal{
     background:#000;
-    border:1px solid #17472a;
+    border:1px solid #19472a;
     border-radius:10px;
     padding:15px;
-    min-height:240px;
-    overflow:hidden;
-    box-shadow:inset 0 0 20px rgba(0,255,102,.03);
-}
-
-.terminal-top{
-    display:flex;
-    gap:5px;
-    margin-bottom:13px;
-}
-
-.dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#24402f;
+    min-height:220px;
 }
 
 .terminal-text{
-    color:var(--primary);
+    color:#00ff66;
     font-family:monospace;
     font-size:11px;
     line-height:1.8;
     white-space:pre-wrap;
 }
 
-/* SUCCESS */
-
 .success{
     text-align:center;
-    padding:20px 5px;
+    padding:15px 0;
 }
 
 .success-icon{
     width:75px;
     height:75px;
     margin:0 auto 15px;
+    border:2px solid #00ff66;
     border-radius:50%;
-    border:2px solid var(--primary);
     display:flex;
     align-items:center;
     justify-content:center;
-    color:var(--primary);
+    color:#00ff66;
     font-size:32px;
-    box-shadow:0 0 20px rgba(0,255,102,.2);
+    box-shadow:0 0 20px #00ff6633;
 }
 
 .success h2{
-    color:var(--primary);
+    color:#00ff66;
     font-size:18px;
 }
 
 .success p{
-    margin-top:10px;
-    color:var(--text-muted);
+    color:#789;
     font-size:10px;
-    line-height:1.8;
+    line-height:1.7;
+    margin-top:10px;
 }
 
-/* GUILD INFO */
-
-.guild-info{
-    margin-top:18px;
+.info{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:7px;
+    margin-top:18px;
 }
 
 .info-box{
-    padding:10px 5px;
-    background:#050d14;
-    border:1px solid #143022;
+    background:#040b10;
+    border:1px solid #193b27;
     border-radius:8px;
-    text-align:center;
+    padding:10px 3px;
 }
 
-.info-box span{
+.info-box small{
     display:block;
-    color:var(--text-muted);
+    color:#789;
     font-size:7px;
     margin-bottom:5px;
 }
 
 .info-box strong{
-    color:var(--primary);
-    font-size:9px;
-    word-break:break-word;
+    color:#00ff66;
+    font-size:8px;
+    word-break:break-all;
 }
 
-/* YOUTUBE */
-
 .youtube{
-    margin-top:15px;
+    display:block;
     text-decoration:none;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    color:#fff;
+    color:white;
     background:#111;
     border:1px solid #292929;
     border-radius:8px;
-    padding:12px;
-    font-size:9px;
+    padding:13px;
+    margin-top:15px;
+    font-size:10px;
 }
-
-.youtube i{
-    color:#ff0000;
-    font-size:17px;
-}
-
-/* FOOTER */
 
 .footer{
     text-align:center;
-    padding:18px 0 8px;
-    color:#43564b;
+    color:#405448;
     font-size:8px;
+    padding:18px 0;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:420px){
-
-    .container{
-        padding:10px;
-    }
-
-    .card{
-        padding:15px;
-    }
-
+@media(max-width:400px){
     .bot-grid{
         grid-template-columns:1fr;
     }
 
-    .line{
-        width:30px;
-    }
-
-    .header h1{
-        font-size:19px;
+    .container{
+        padding:12px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
-
 <div class="container">
-
-    <!-- HEADER -->
 
     <div class="header">
 
-        <div class="logo">
-            <i class="fa-solid fa-bolt"></i>
-        </div>
+        <div class="logo">⚡</div>
 
         <h1>GW PATHSHALA VIP</h1>
 
@@ -555,25 +398,21 @@ select option{
 
     <div class="progress">
 
-        <div class="progress-item">
-            <div class="circle active" id="p1">1</div>
-            <div class="line" id="l1"></div>
-        </div>
+        <div class="circle active" id="p1">1</div>
 
-        <div class="progress-item">
-            <div class="circle" id="p2">2</div>
-            <div class="line" id="l2"></div>
-        </div>
+        <div class="line" id="l1"></div>
 
-        <div class="progress-item">
-            <div class="circle" id="p3">3</div>
-            <div class="line" id="l3"></div>
-        </div>
+        <div class="circle" id="p2">2</div>
 
-        <div class="progress-item">
-            <div class="circle" id="p4">4</div>
-            <div class="line" id="l4"></div>
-        </div>
+        <div class="line" id="l2"></div>
+
+        <div class="circle" id="p3">3</div>
+
+        <div class="line" id="l3"></div>
+
+        <div class="circle" id="p4">4</div>
+
+        <div class="line" id="l4"></div>
 
         <div class="circle" id="p5">5</div>
 
@@ -582,73 +421,65 @@ select option{
 
     <div class="card">
 
+
         <!-- STEP 1 -->
 
         <div class="step active" id="step1">
 
-            <div class="step-title">
+            <div class="title">
 
                 <h2>Guild Information</h2>
 
-                <p>Enter your guild details below</p>
+                <p>Enter your guild details</p>
 
             </div>
 
 
-            <div class="form-group">
+            <label>Guild UID</label>
 
-                <label>Guild UID</label>
-
-                <input
-                    type="text"
-                    id="guildUid"
-                    placeholder="Enter Guild UID"
-                >
-
-            </div>
+            <input
+                type="text"
+                id="guildUid"
+                placeholder="Enter Guild UID"
+            >
 
 
-            <div class="form-group">
+            <label>Guild Level</label>
 
-                <label>Guild Level</label>
-
-                <input
-                    type="number"
-                    id="guildLevel"
-                    placeholder="Enter Guild Level"
-                    min="1"
-                    max="999"
-                >
-
-            </div>
+            <input
+                type="number"
+                id="guildLevel"
+                placeholder="Enter Guild Level"
+            >
 
 
-            <div class="form-group">
+            <label>Region</label>
 
-                <label>Region</label>
+            <select id="region">
 
-                <select id="region">
+                <option value="">Select Region</option>
 
-                    <option value="">Select Region</option>
-                    <option value="IND">India</option>
-                    <option value="BR">Brazil</option>
-                    <option value="BD">Bangladesh</option>
-                    <option value="SG">Singapore</option>
-                    <option value="ID">Indonesia</option>
-                    <option value="TH">Thailand</option>
-                    <option value="US">USA</option>
-                    <option value="EU">Europe</option>
+                <option value="India">India</option>
 
-                </select>
+                <option value="Brazil">Brazil</option>
 
-            </div>
+                <option value="Bangladesh">Bangladesh</option>
+
+                <option value="Singapore">Singapore</option>
+
+                <option value="Indonesia">Indonesia</option>
+
+                <option value="Thailand">Thailand</option>
+
+                <option value="USA">USA</option>
+
+                <option value="Europe">Europe</option>
+
+            </select>
 
 
-            <button class="btn" onclick="goToStep2()">
-
-                CONTINUE
-                <i class="fa-solid fa-arrow-right"></i>
-
+            <button onclick="step2()">
+                CONTINUE →
             </button>
 
         </div>
@@ -658,11 +489,11 @@ select option{
 
         <div class="step" id="step2">
 
-            <div class="step-title">
+            <div class="title">
 
                 <h2>Select Bot</h2>
 
-                <p>Choose your desired guild glory bot</p>
+                <p>Choose your bot</p>
 
             </div>
 
@@ -670,14 +501,12 @@ select option{
             <div class="bot-grid">
 
                 <div
-                    class="bot-card"
+                    class="bot"
                     id="bot1"
-                    onclick="selectBot('SUPER BOT',239)"
+                    onclick="selectBot(1)"
                 >
 
-                    <div class="bot-icon">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
+                    <div class="bot-icon">🤖</div>
 
                     <h3>SUPER BOT</h3>
 
@@ -689,14 +518,12 @@ select option{
 
 
                 <div
-                    class="bot-card"
+                    class="bot"
                     id="bot2"
-                    onclick="selectBot('ULTRA SUPER BOT',450)"
+                    onclick="selectBot(2)"
                 >
 
-                    <div class="bot-icon">
-                        <i class="fa-solid fa-microchip"></i>
-                    </div>
+                    <div class="bot-icon">⚡</div>
 
                     <h3>ULTRA SUPER BOT</h3>
 
@@ -709,26 +536,16 @@ select option{
             </div>
 
 
-            <button
-                class="btn"
-                onclick="goToPayment()"
-                style="margin-top:18px;"
-            >
-
+            <button onclick="step3()">
                 CONTINUE TO PAYMENT
-                <i class="fa-solid fa-credit-card"></i>
-
             </button>
 
 
             <button
-                class="btn btn-secondary"
-                onclick="goToStep(1)"
+                class="back"
+                onclick="showStep(1)"
             >
-
-                <i class="fa-solid fa-arrow-left"></i>
-                BACK
-
+                ← BACK
             </button>
 
         </div>
@@ -738,116 +555,85 @@ select option{
 
         <div class="step" id="step3">
 
-            <div class="step-title">
+            <div class="title">
 
-                <h2>Complete Payment</h2>
+                <h2>Payment</h2>
 
-                <p>Scan QR and complete your payment</p>
+                <p>Scan QR and complete payment</p>
 
             </div>
 
 
             <div class="payment-info">
 
-                <p>
-                    Selected Bot:
-                    <strong id="selectedBotText">-</strong>
-                </p>
+                Bot:
+                <span id="botName">-</span>
 
-                <p>
-                    Amount:
-                    <strong id="selectedAmountText">₹0</strong>
-                </p>
+                <br>
+
+                Amount:
+                <span id="botAmount">₹0</span>
 
             </div>
 
-
-            <!-- QR CODE -->
 
             <div class="qr-box">
 
                 <img
                     src="qr.jpg.jpeg"
-                    alt="UPI QR Code"
+                    alt="Payment QR Code"
                 >
 
-                <p
-                    style="
-                    color:#000;
-                    font-size:11px;
-                    font-weight:800;
-                    margin-top:5px;
-                    "
-                >
+                <div class="scan-text">
                     Scan & Pay via UPI
-                </p>
-
-            </div>
-
-
-            <!-- SCREENSHOT -->
-
-            <div class="form-group">
-
-                <label>Upload Payment Screenshot</label>
-
-                <div
-                    class="upload-box"
-                    onclick="document.getElementById('ssInput').click()"
-                >
-
-                    <i
-                        class="fa-solid fa-cloud-arrow-up"
-                        style="
-                        font-size:20px;
-                        color:var(--primary);
-                        "
-                    ></i>
-
-                    <p
-                        id="uploadText"
-                        style="
-                        font-size:11px;
-                        margin-top:5px;
-                        color:var(--text-muted);
-                        "
-                    >
-                        Click to choose Screenshot
-                    </p>
-
                 </div>
 
+            </div>
 
-                <input
-                    type="file"
-                    id="ssInput"
-                    accept="image/*"
-                    style="display:none;"
-                    onchange="handleFile(this)"
+
+            <label>
+                Upload Payment Screenshot
+            </label>
+
+
+            <div
+                class="upload"
+                onclick="document.getElementById('screenshot').click()"
+            >
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <div
+                    class="upload-text"
+                    id="uploadText"
                 >
+                    Click here to select screenshot
+                </div>
 
             </div>
 
 
-            <button
-                class="btn"
-                onclick="processSubmission()"
+            <input
+                type="file"
+                id="screenshot"
+                accept="image/*"
+                style="display:none"
+                onchange="fileSelected(this)"
             >
 
-                SUBMIT PAYMENT
-                <i class="fa-solid fa-check"></i>
 
+            <button onclick="submitPayment()">
+                SUBMIT PAYMENT ✓
             </button>
 
 
             <button
-                class="btn btn-secondary"
-                onclick="goToStep(2)"
+                class="back"
+                onclick="showStep(2)"
             >
-
-                <i class="fa-solid fa-arrow-left"></i>
-                BACK
-
+                ← BACK
             </button>
 
         </div>
@@ -857,29 +643,20 @@ select option{
 
         <div class="step" id="step4">
 
-            <div class="step-title">
+            <div class="title">
 
-                <h2>Processing</h2>
+                <h2>Processing...</h2>
 
-                <p>Connecting to Guild Glory system...</p>
+                <p>Please wait</p>
 
             </div>
 
 
             <div class="terminal">
 
-                <div class="terminal-top">
-
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-
-                </div>
-
-
                 <div
                     class="terminal-text"
-                    id="terminalText"
+                    id="terminal"
                 ></div>
 
             </div>
@@ -894,9 +671,7 @@ select option{
             <div class="success">
 
                 <div class="success-icon">
-
-                    <i class="fa-solid fa-check"></i>
-
+                    ✓
                 </div>
 
 
@@ -904,22 +679,21 @@ select option{
 
 
                 <p>
-                    Your payment screenshot has been submitted
-                    successfully.
+                    Your payment screenshot has been
+                    submitted successfully.
                 </p>
 
 
                 <p>
-                    Our system will process your Guild Glory
-                    request.
+                    Your request is now being processed.
                 </p>
 
 
-                <div class="guild-info">
+                <div class="info">
 
                     <div class="info-box">
 
-                        <span>GUILD UID</span>
+                        <small>GUILD UID</small>
 
                         <strong id="finalUid">-</strong>
 
@@ -928,7 +702,7 @@ select option{
 
                     <div class="info-box">
 
-                        <span>LEVEL</span>
+                        <small>LEVEL</small>
 
                         <strong id="finalLevel">-</strong>
 
@@ -937,7 +711,7 @@ select option{
 
                     <div class="info-box">
 
-                        <span>REGION</span>
+                        <small>REGION</small>
 
                         <strong id="finalRegion">-</strong>
 
@@ -947,15 +721,11 @@ select option{
 
 
                 <a
+                    class="youtube"
                     href="https://youtube.com/@gw_pathshala"
                     target="_blank"
-                    class="youtube"
                 >
-
-                    <i class="fa-brands fa-youtube"></i>
-
-                    GW PATHSHALA YOUTUBE
-
+                    ▶ GW PATHSHALA YOUTUBE
                 </a>
 
             </div>
@@ -966,9 +736,7 @@ select option{
 
 
     <div class="footer">
-
-        © GW PATHSHALA VIP • GUILD GLORY BOT
-
+        © GW PATHSHALA VIP
     </div>
 
 </div>
@@ -977,183 +745,82 @@ select option{
 <script>
 
 /* =========================
-   MATRIX EFFECT
-========================= */
-
-const canvas =
-    document.getElementById("matrix");
-
-const ctx =
-    canvas.getContext("2d");
-
-function resizeCanvas(){
-
-    canvas.width =
-        window.innerWidth;
-
-    canvas.height =
-        window.innerHeight;
-}
-
-resizeCanvas();
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-const chars =
-    "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-let fontSize = 12;
-
-let columns =
-    Math.floor(canvas.width / fontSize);
-
-let drops =
-    Array(columns).fill(1);
-
-
-function drawMatrix(){
-
-    ctx.fillStyle =
-        "rgba(3,7,18,0.08)";
-
-    ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    ctx.fillStyle =
-        "#00ff66";
-
-    ctx.font =
-        fontSize + "px monospace";
-
-
-    for(
-        let i = 0;
-        i < drops.length;
-        i++
-    ){
-
-        const text =
-            chars.charAt(
-                Math.floor(
-                    Math.random() *
-                    chars.length
-                )
-            );
-
-        ctx.fillText(
-            text,
-            i * fontSize,
-            drops[i] * fontSize
-        );
-
-
-        if(
-            drops[i] * fontSize >
-            canvas.height &&
-            Math.random() > .975
-        ){
-
-            drops[i] = 0;
-
-        }
-
-        drops[i]++;
-
-    }
-
-}
-
-setInterval(
-    drawMatrix,
-    50
-);
-
-
-/* =========================
    VARIABLES
 ========================= */
 
 let selectedBot = "";
-
 let selectedAmount = 0;
 
 
 /* =========================
-   STEP SYSTEM
+   SHOW STEP
 ========================= */
 
-function goToStep(step){
+function showStep(number){
 
     document
         .querySelectorAll(".step")
-        .forEach(function(el){
+        .forEach(function(step){
 
-            el.classList.remove("active");
+            step.classList.remove("active");
 
         });
 
 
     document
-        .getElementById("step" + step)
+        .getElementById("step" + number)
         .classList.add("active");
 
 
-    updateProgress(step);
+    updateProgress(number);
 
 }
 
 
-function updateProgress(step){
+/* =========================
+   PROGRESS
+========================= */
 
-    for(
-        let i = 1;
-        i <= 5;
-        i++
-    ){
+function updateProgress(number){
 
-        const circle =
+    for(let i = 1; i <= 5; i++){
+
+        let p =
             document.getElementById("p" + i);
 
-        if(!circle) continue;
+        if(p){
 
-        if(i <= step){
+            if(i <= number){
 
-            circle.classList.add("active");
+                p.classList.add("active");
 
-        }else{
+            }else{
 
-            circle.classList.remove("active");
+                p.classList.remove("active");
+
+            }
 
         }
 
     }
 
 
-    for(
-        let i = 1;
-        i <= 4;
-        i++
-    ){
+    for(let i = 1; i <= 4; i++){
 
-        const line =
+        let line =
             document.getElementById("l" + i);
 
-        if(!line) continue;
+        if(line){
 
-        if(i < step){
+            if(i < number){
 
-            line.classList.add("active");
+                line.classList.add("active");
 
-        }else{
+            }else{
 
-            line.classList.remove("active");
+                line.classList.remove("active");
+
+            }
 
         }
 
@@ -1166,51 +833,54 @@ function updateProgress(step){
    STEP 1
 ========================= */
 
-function goToStep2(){
+function step2(){
 
-    const uid =
+    let uid =
         document
         .getElementById("guildUid")
         .value
         .trim();
 
-    const level =
+    let level =
         document
         .getElementById("guildLevel")
         .value
         .trim();
 
-    const region =
+    let region =
         document
         .getElementById("region")
         .value;
 
 
-    if(!uid){
+    if(uid === ""){
 
-        alert("Please enter Guild UID!");
+        alert("Guild UID enter karo.");
 
         return;
+
     }
 
 
-    if(!level){
+    if(level === ""){
 
-        alert("Please enter Guild Level!");
+        alert("Guild Level enter karo.");
 
         return;
+
     }
 
 
-    if(!region){
+    if(region === ""){
 
-        alert("Please select Region!");
+        alert("Region select karo.");
 
         return;
+
     }
 
 
-    goToStep(2);
+    showStep(2);
 
 }
 
@@ -1219,12 +889,7 @@ function goToStep2(){
    BOT SELECT
 ========================= */
 
-function selectBot(name, amount){
-
-    selectedBot = name;
-
-    selectedAmount = amount;
-
+function selectBot(number){
 
     document
         .getElementById("bot1")
@@ -1235,7 +900,10 @@ function selectBot(name, amount){
         .classList.remove("selected");
 
 
-    if(name === "SUPER BOT"){
+    if(number === 1){
+
+        selectedBot = "SUPER BOT";
+        selectedAmount = 239;
 
         document
             .getElementById("bot1")
@@ -1244,7 +912,10 @@ function selectBot(name, amount){
     }
 
 
-    if(name === "ULTRA SUPER BOT"){
+    if(number === 2){
+
+        selectedBot = "ULTRA SUPER BOT";
+        selectedAmount = 450;
 
         document
             .getElementById("bot2")
@@ -1256,64 +927,52 @@ function selectBot(name, amount){
 
 
 /* =========================
-   PAYMENT PAGE
+   STEP 3
 ========================= */
 
-function goToPayment(){
+function step3(){
 
-    if(!selectedBot){
+    if(selectedBot === ""){
 
-        alert("Please select a bot!");
+        alert("Pehle bot select karo.");
 
         return;
+
     }
 
 
     document
-        .getElementById("selectedBotText")
+        .getElementById("botName")
         .textContent =
         selectedBot;
 
 
     document
-        .getElementById("selectedAmountText")
+        .getElementById("botAmount")
         .textContent =
         "₹" + selectedAmount;
 
 
-    goToStep(3);
+    showStep(3);
 
 }
 
 
 /* =========================
-   FILE UPLOAD
+   FILE
 ========================= */
 
-function handleFile(input){
-
-    const uploadText =
-        document.getElementById("uploadText");
-
+function fileSelected(input){
 
     if(
         input.files &&
         input.files.length > 0
     ){
 
-        uploadText.textContent =
+        document
+            .getElementById("uploadText")
+            .textContent =
             input.files[0].name;
-
-        uploadText.style.color =
-            "var(--primary)";
-
-    }else{
-
-        uploadText.textContent =
-            "Click to choose Screenshot";
-
-        uploadText.style.color =
-            "var(--text-muted)";
 
     }
 
@@ -1321,118 +980,107 @@ function handleFile(input){
 
 
 /* =========================
-   SUBMIT SOUND
+   SOUND
 ========================= */
 
-function playSubmitSound(){
+function playSound(){
 
     const AudioContext =
         window.AudioContext ||
         window.webkitAudioContext;
 
 
-    if(!AudioContext) return;
+    if(!AudioContext){
+
+        return;
+
+    }
 
 
-    const audioCtx =
+    const audio =
         new AudioContext();
 
 
     const oscillator =
-        audioCtx.createOscillator();
+        audio.createOscillator();
 
 
     const gain =
-        audioCtx.createGain();
+        audio.createGain();
 
 
-    oscillator.type =
-        "sine";
+    oscillator.type = "sine";
 
 
     oscillator.frequency.setValueAtTime(
         700,
-        audioCtx.currentTime
+        audio.currentTime
     );
 
 
     oscillator.frequency.exponentialRampToValueAtTime(
         1100,
-        audioCtx.currentTime + .12
+        audio.currentTime + 0.12
     );
 
 
     gain.gain.setValueAtTime(
-        .25,
-        audioCtx.currentTime
+        0.25,
+        audio.currentTime
     );
 
 
     gain.gain.exponentialRampToValueAtTime(
-        .01,
-        audioCtx.currentTime + .25
+        0.01,
+        audio.currentTime + 0.3
     );
 
 
     oscillator.connect(gain);
 
     gain.connect(
-        audioCtx.destination
+        audio.destination
     );
 
 
     oscillator.start();
 
-
     oscillator.stop(
-        audioCtx.currentTime + .25
+        audio.currentTime + 0.3
     );
 
 }
 
 
 /* =========================
-   PAYMENT SUBMISSION
+   SUBMIT
 ========================= */
 
-function processSubmission(){
+function submitPayment(){
 
-    const screenshot =
+    let file =
         document
-        .getElementById("ssInput")
+        .getElementById("screenshot")
         .files[0];
 
 
-    if(!screenshot){
+    if(!file){
 
         alert(
-            "Please upload your payment screenshot!"
+            "Payment screenshot upload karo."
         );
 
         return;
+
     }
 
 
-    /*
-       Sound plays after user presses submit.
-       Actual payment verification requires
-       a payment gateway/backend.
-    */
+    /* Submit ke baad sound */
 
-    playSubmitSound();
+    playSound();
 
 
-    document
-        .getElementById("step3")
-        .classList.remove("active");
-
-
-    document
-        .getElementById("step4")
-        .classList.add("active");
-
-
-    updateProgress(4);
+    showStep(4);
 
 
     runTerminal();
@@ -1441,14 +1089,14 @@ function processSubmission(){
 
 
 /* =========================
-   TERMINAL PROCESS
+   TERMINAL
 ========================= */
 
 function runTerminal(){
 
-    const terminal =
+    let terminal =
         document.getElementById(
-            "terminalText"
+            "terminal"
         );
 
 
@@ -1457,63 +1105,369 @@ function runTerminal(){
 
     const logs = [
 
-        "> Initializing GW PATHSHALA system...",
+        "> Starting system...",
 
         "> Connecting to server...",
 
         "> Guild UID received...",
 
-        "> Guild information verified...",
-
-        "> Checking selected bot...",
+        "> Guild details loaded...",
 
         "> Payment screenshot received...",
 
-        "> Upload request processing...",
+        "> Checking submission...",
 
-        "> Security check passed...",
+        "> Processing request...",
 
-        "> Guild Glory request queued...",
+        "> Request added to queue...",
 
-        "> Finalizing request...",
+        "> Finalizing...",
 
-        "> PROCESS COMPLETED."
+        <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GW PATHSHALA VIP</title>
+
+<style>
+body{background:#030712;color:white;font-family:Arial;margin:0}
+.box{max-width:420px;margin:30px auto;padding:15px}
+.card{background:#07111c;border:1px solid #00ff66;border-radius:15px;padding:20px}
+h1,h2{text-align:center;color:#00ff66}
+input,select,button{width:100%;padding:13px;margin:7px 0;box-sizing:border-box;border-radius:8px}
+input,select{background:#030712;color:white;border:1px solid #345}
+button{background:#00ff66;border:0;font-weight:bold;cursor:pointer}
+.step{display:none}.active{display:block}
+.bot{border:1px solid #345;padding:15px;margin:10px 0;text-align:center;border-radius:10px;cursor:pointer}
+.selected{border-color:#00ff66}
+.qr{width:220px;display:block;margin:15px auto}
+#terminal{background:#000;color:#00ff66;padding:15px;min-height:150px;font-family:monospace}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<div class="card">
+
+<!-- 1 -->
+<div id="step1" class="step active">
+
+<h1>GW PATHSHALA VIP</h1>
+<h2>Guild Details</h2>
+
+<input id="guildUid" placeholder="Guild UID">
+<input id="guildLevel" placeholder="Guild Level">
+
+<select id="guildRegion">
+<option value="">Select Region</option>
+<option>India</option>
+<option>Brazil</option>
+<option>Bangladesh</option>
+<option>Singapore</option>
+</select>
+
+<button onclick="goStep2()">CONTINUE</button>
+
+</div>
+
+
+<!-- 2 -->
+<div id="step2" class="step">
+
+<h2>Select Bot</h2>
+
+<div id="bot1" class="bot" onclick="selectBot(1)">
+SUPER BOT<br><b>₹239</b>
+</div>
+
+<div id="bot2" class="bot" onclick="selectBot(2)">
+ULTRA SUPER BOT<br><b>₹450</b>
+</div>
+
+<button onclick="goStep3()">PAYMENT</button>
+
+</div>
+
+
+<!-- 3 -->
+<div id="step3" class="step">
+
+<h2>Payment</h2>
+
+<img src="qr.jpg.jpeg" class="qr">
+
+<p style="text-align:center">
+Scan QR & Pay
+</p>
+
+<input
+type="file"
+id="paymentScreenshot"
+accept="image/*"
+>
+
+<button onclick="submitPayment()">
+SUBMIT PAYMENT
+</button>
+
+</div>
+
+
+<!-- 4 -->
+<div id="step4" class="step">
+
+<h2>Processing...</h2>
+
+<div id="terminal"></div>
+
+</div>
+
+
+<!-- 5 -->
+<div id="step5" class="step">
+
+<h2>✓ SUCCESS</h2>
+
+<p style="text-align:center">
+Payment screenshot submitted successfully.
+</p>
+
+<button onclick="location.reload()">
+DONE
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+let selectedBot = 0;
+
+
+/* STEP CHANGE */
+
+function showStep(number){
+
+    document
+    .querySelectorAll(".step")
+    .forEach(function(x){
+
+        x.classList.remove("active");
+
+    });
+
+    document
+    .getElementById("step"+number)
+    .classList.add("active");
+}
+
+
+/* STEP 1 */
+
+function goStep2(){
+
+    let uid =
+    document.getElementById("guildUid").value.trim();
+
+    let level =
+    document.getElementById("guildLevel").value.trim();
+
+    let region =
+    document.getElementById("guildRegion").value;
+
+    if(!uid || !level || !region){
+
+        alert("Please fill all details");
+        return;
+    }
+
+    showStep(2);
+}
+
+
+/* BOT */
+
+function selectBot(number){
+
+    selectedBot = number;
+
+    document
+    .getElementById("bot1")
+    .classList.remove("selected");
+
+    document
+    .getElementById("bot2")
+    .classList.remove("selected");
+
+    document
+    .getElementById("bot"+number)
+    .classList.add("selected");
+}
+
+
+/* PAYMENT PAGE */
+
+function goStep3(){
+
+    if(selectedBot === 0){
+
+        alert("Please select a bot");
+        return;
+    }
+
+    showStep(3);
+}
+
+
+/* SOUND */
+
+function playSound(){
+
+    let AudioCtx =
+    window.AudioContext ||
+    window.webkitAudioContext;
+
+    if(!AudioCtx) return;
+
+    let audio = new AudioCtx();
+
+    let oscillator =
+    audio.createOscillator();
+
+    let gain =
+    audio.createGain();
+
+    oscillator.frequency.value = 800;
+
+    gain.gain.value = 0.2;
+
+    oscillator.connect(gain);
+
+    gain.connect(audio.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+        audio.currentTime + 0.25
+    );
+}
+
+
+/* SUBMIT */
+
+function submitPayment(){
+
+    let screenshot =
+    document
+    .getElementById("paymentScreenshot")
+    .files[0];
+
+    if(!screenshot){
+
+        alert("Payment screenshot upload karo");
+        return;
+    }
+
+    playSound();
+
+    showStep(4);
+
+    startProcessing();
+}
+
+
+/* PROCESSING */
+
+function startProcessing(){
+
+    let terminal =
+    document.getElementById("terminal");
+
+    terminal.innerHTML = "";
+
+    let logs = [
+
+        "> Starting system...",
+
+        "> Screenshot received...",
+
+        "> Processing payment submission...",
+
+        "> Request submitted...",
+
+        "> Completed ✓"
+
+    ];
+
+    let i = 0;
+
+    let timer = setInterval(function(){
+
+        terminal.innerHTML +=
+        logs[i] + "<br>";
+
+        i++;
+
+        if(i >= logs.length){
+
+            clearInterval(timer);
+
+            setTimeout(function(){
+
+                showStep(5);
+
+            },800);
+        }
+
+    },600);
+}
+
+</script>
+
+</body>
+</html>> PROCESS COMPLETED ✓"
 
     ];
 
 
-    let index = 0;
+    let i = 0;
 
 
-    function nextLog(){
+    function next(){
 
-        if(index >= logs.length){
+        if(i >= logs.length){
 
             setTimeout(
-                showSuccess,
+                success,
                 700
             );
 
             return;
+
         }
 
 
         terminal.textContent +=
-            logs[index] + "\n";
+            logs[i] + "\n";
 
 
-        index++;
+        i++;
 
 
         setTimeout(
-            nextLog,
-            550
+            next,
+            500
         );
 
     }
 
 
-    nextLog();
+    next();
 
 }
 
@@ -1522,50 +1476,37 @@ function runTerminal(){
    SUCCESS
 ========================= */
 
-function showSuccess(){
+function success(){
 
-    const uid =
+    document
+        .getElementById("finalUid")
+        .textContent =
         document
         .getElementById("guildUid")
         .value;
 
 
-    const level =
+    document
+        .getElementById("finalLevel")
+        .textContent =
         document
         .getElementById("guildLevel")
         .value;
 
 
-    const region =
-        document
-        .getElementById("region");
-
-
-    document
-        .getElementById("finalUid")
-        .textContent =
-        uid;
-
-
-    document
-        .getElementById("finalLevel")
-        .textContent =
-        level;
-
-
     document
         .getElementById("finalRegion")
         .textContent =
-        region.options[
-            region.selectedIndex
-        ].text;
+        document
+        .getElementById("region")
+        .value;
 
 
-    goToStep(5);
+    showStep(5);
 
 }
 
 </script>
 
 </body>
-</html>
+    </html>
