@@ -1,256 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GW PATHSHALA - VIP GUILD BOT</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<title>GW PATHSHALA - VIP GUILD BOT</title>
 
-    <style>
-        :root {
-            --primary: #00ff66;
-            --primary-glow: rgba(0, 255, 102, 0.4);
-            --accent: #ffcc00;
-            --bg-dark: #030712;
-            --card-bg: rgba(15, 23, 42, 0.85);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.12);
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, sans-serif;
-        }
+<style>
+:root {
+    --primary: #00ff66;
+    --primary-glow: rgba(0,255,102,.4);
+    --accent: #ffcc00;
+    --bg-dark: #030712;
+    --card-bg: rgba(15,23,42,.85);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255,255,255,.12);
+}
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px 0;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
 
-        #matrixBg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.2;
-        }
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0;
+}
 
-        .container {
-            width: 100%;
-            max-width: 450px;
-            padding: 15px;
-            position: relative;
-            z-index: 2;
-        }
+#matrixBg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: .2;
+}
 
-        .header-box {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+}
 
-        .brand-badge {
-            background: linear-gradient(135deg, var(--primary), #00cc52);
-            color: #000;
-            font-size: 11px;
-            font-weight: 900;
-            padding: 5px 14px;
-            border-radius: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px var(--primary-glow);
-            display: inline-block;
-            margin-bottom: 8px;
-        }
+.header-box {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .main-title {
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #fff, var(--primary), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.brand-badge {
+    background: linear-gradient(135deg,var(--primary),#00cc52);
+    color: #000;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 24px;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0,255,102,0.05);
-        }
+.main-title {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(to right,#fff,var(--primary),#fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        .step-title {
-            color: var(--primary);
-            font-size: 13px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.8);
+}
 
-        .step {
-            display: none;
-        }
+.step {
+    display: none;
+}
 
-        .step.active {
-            display: block;
-            animation: fadeIn 0.3s ease-in-out;
-        }
+.step.active {
+    display: block;
+    animation: fadeIn .3s ease-in-out;
+}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.step-title {
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+.form-group {
+    margin-bottom: 16px;
+}
 
-        label {
-            display: block;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-        }
+label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
 
-        input,
-        select {
-            width: 100%;
-            padding: 14px;
-            background: rgba(5, 10, 20, 0.9);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: 0.3s;
-        }
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(5,10,20,.9);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+}
 
-        input:focus,
-        select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 12px var(--primary-glow);
-        }
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 12px var(--primary-glow);
+}
 
-        .bot-card {
-            background: rgba(10, 15, 30, 0.6);
-            border: 2px solid var(--border-color);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-        }
+.bot-card {
+    background: rgba(10,15,30,.6);
+    border: 2px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 14px;
+    cursor: pointer;
+}
 
-        .bot-card.selected {
-            border-color: var(--primary);
-            background: rgba(0, 255, 102, 0.08);
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
+.bot-card.selected {
+    border-color: var(--primary);
+    background: rgba(0,255,102,.08);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
 
-        .bot-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-        }
+.bot-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
 
-        .bot-name {
-            font-size: 16px;
-            font-weight: 900;
-        }
+.bot-name {
+    font-size: 16px;
+    font-weight: 900;
+}
 
-        .bot-price {
-            font-size: 18px;
-            font-weight: 900;
-            color: var(--accent);
-        }
+.bot-price {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--accent);
+}
 
-        .bot-features {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+.bot-features {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
 
-        .btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--primary), #00cc52);
-            border: none;
-            border-radius: 10px;
-            color: #000;
-            font-size: 14px;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 5px 20px var(--primary-glow);
-            letter-spacing: 1px;
-            margin-top: 10px;
-        }
+.btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg,var(--primary),#00cc52);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 5px 20px var(--primary-glow);
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
 
-        .qr-box {
-            background: #fff;
-            padding: 10px;
-            border-radius: 12px;
-            width: 180px;
-            margin: 0 auto 15px;
-            text-align: center;
-        }
+.qr-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    width: 220px;
+    margin: 0 auto 18px;
+    text-align: center;
+}
 
-        .qr-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            display: block;
-        }
+.qr-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
 
-        .upload-box {
-            border: 2px dashed var(--border-color);
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            background: rgba(0,0,0,0.3);
-            cursor: pointer;
-            margin-bottom: 15px;
-        }
+.upload-box {
+    border: 2px dashed var(--border-color);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(0,0,0,.3);
+    cursor: pointer;
+    margin-bottom: 15px;
+}
 
-        .terminal {
-            background: #000;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 14px;
-            font-family: monospace;
-            font-size: 11px;
-            color: var(--primary);
-            height: 200px;
-            overflow-y: auto;
-            line-height: 1.6;
-        }
-    </style>
+.terminal {
+    background: #000;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--primary);
+    height: 200px;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+</style>
 </head>
 
 <body>
@@ -259,516 +253,1357 @@
 
 <div class="container">
 
-    <div class="header-box">
-        <span class="brand-badge">GW PATHSHALA VIP</span>
-        <div class="main-title">GUILD GLORY BOT</div>
+<div class="header-box">
+    <span class="brand-badge">GW PATHSHALA VIP</span>
+    <div class="main-title">GUILD GLORY BOT</div>
+</div>
+
+<div class="card">
+
+<!-- STEP 1 -->
+<div id="step1" class="step active">
+
+    <div class="step-title">
+        <i class="fa-solid fa-shield-halved"></i>
+        Guild Details
     </div>
 
-    <div class="card">
+    <div class="form-group">
+        <label>Guild UID</label>
+        <input type="number"
+               id="guildUid"
+               placeholder="Enter Guild UID">
+    </div>
 
-        <!-- STEP 1 -->
-        <div id="step1" class="step active">
+    <div class="form-group">
+        <label>Guild Level</label>
+        <input type="number"
+               id="guildLevel"
+               placeholder="Enter Guild Level (1 - 6)">
+    </div>
 
-            <div class="step-title">
-                <i class="fa-solid fa-shield-halved"></i>
-                Guild Details
-            </div>
+    <div class="form-group">
+        <label>Select Region</label>
 
-            <div class="form-group">
-                <label>Guild UID</label>
-                <input
-                    type="number"
-                    id="guildUid"
-                    placeholder="Enter Guild UID (e.g. 3012948122)"
-                >
-            </div>
+        <select id="region">
+            <option value="" disabled selected hidden>
+                Select Server Region
+            </option>
+            <option value="India">India</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Pakistan">Pakistan</option>
+        </select>
+    </div>
 
-            <div class="form-group">
-                <label>Guild Level</label>
-                <input
-                    type="number"
-                    id="guildLevel"
-                    placeholder="Enter Guild Level (1 - 6)"
-                >
-            </div>
+    <button class="btn" onclick="goToStep2()">
+        Next: Select Bot
+        <i class="fa-solid fa-arrow-right"></i>
+    </button>
 
-            <div class="form-group">
-                <label>Select Region</label>
+</div>
 
-                <select id="region">
-                    <option value="" disabled selected hidden>
-                        Select Server Region
-                    </option>
 
-                    <option value="India">India</option>
-                    <option value="Singapore">Singapore</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="Pakistan">Pakistan</option>
-                </select>
-            </div>
+<!-- STEP 2 -->
+<div id="step2" class="step">
 
-            <button class="btn" onclick="goToStep2()">
-                Next: Select Bot
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
+    <div class="step-title">
+        <i class="fa-solid fa-robot"></i>
+        Select Bot Power
+    </div>
 
+    <div class="bot-card selected"
+         onclick="selectBot(this,'SUPER BOT',239)">
+
+        <div class="bot-top">
+            <span class="bot-name" style="color:#00ccff;">
+                SUPER BOT
+            </span>
+
+            <span class="bot-price">
+                ₹239
+            </span>
         </div>
 
-
-        <!-- STEP 2 -->
-        <div id="step2" class="step">
-
-            <div class="step-title">
-                <i class="fa-solid fa-robot"></i>
-                Select Bot Power
-            </div>
-
-            <div class="bot-card selected"
-                 onclick="selectBot(this, 'SUPER BOT', 239)">
-
-                <div class="bot-top">
-                    <span class="bot-name" style="color:#00ccff;">
-                        SUPER BOT
-                    </span>
-
-                    <span class="bot-price">
-                        ₹239
-                    </span>
-                </div>
-
-                <div class="bot-features">
-                    • <strong>Runtime:</strong> 7 to 8 Hours Continuous Injection<br>
-                    • <strong>Speed:</strong> Standard Glory Speed<br>
-                    • <strong>Protection:</strong> Basic Anti-Ban Active
-                </div>
-
-            </div>
-
-
-            <div class="bot-card"
-                 onclick="selectBot(this, 'ULTRA SUPER BOT', 450)">
-
-                <div class="bot-top">
-                    <span class="bot-name" style="color:var(--primary);">
-                        ULTRA SUPER BOT
-                    </span>
-
-                    <span class="bot-price">
-                        ₹450
-                    </span>
-                </div>
-
-                <div class="bot-features">
-                    • <strong>Runtime:</strong> 16 Hours Max (Double Power)<br>
-                    • <strong>Speed:</strong> 2X Fast High-Speed Injection<br>
-                    • <strong>Protection:</strong> Advanced VIP Anti-Ban Shield
-                </div>
-
-            </div>
-
-
-            <button class="btn" onclick="goToPayment()">
-                Proceed To Pay
-                <i class="fa-solid fa-qrcode"></i>
-            </button>
-
+        <div class="bot-features">
+            • <strong>Runtime:</strong> 7 to 8 Hours<br>
+            • <strong>Speed:</strong> Standard Glory Speed<br>
+            • <strong>Protection:</strong> Basic Protection
         </div>
 
+    </div>
 
-        <!-- STEP 3 -->
-        <div id="step3" class="step">
+    <div class="bot-card"
+         onclick="selectBot(this,'ULTRA SUPER BOT',450)">
 
-            <div class="step-title">
-                <i class="fa-solid fa-credit-card"></i>
-                Pay & Activate
-            </div>
+        <div class="bot-top">
+            <span class="bot-name" style="color:var(--primary);">
+                ULTRA SUPER BOT
+            </span>
 
-
-            <!-- QR CODE -->
-            <div class="qr-box">
-
-                <!-- आपकी असली QR फोटो का नाम QR.png होना चाहिए -->
-                <img src="QR.png" alt="Scan QR Code To Pay">
-
-                <p style="color:#000; font-size:11px; font-weight:800; margin-top:5px;">
-                    Scan & Pay via UPI
-                </p>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Upload Payment Screenshot
-                </label>
-
-                <div class="upload-box"
-                     onclick="document.getElementById('ssInput').click()">
-
-                    <i class="fa-solid fa-cloud-arrow-up"
-                       style="font-size:20px;color:var(--primary);">
-                    </i>
-
-                    <p id="uploadText"
-                       style="font-size:11px;margin-top:4px;color:var(--text-muted);">
-                        Click to choose Screenshot
-                    </p>
-
-                </div>
-
-                <input
-                    type="file"
-                    id="ssInput"
-                    accept="image/*"
-                    style="display:none;"
-                    onchange="handleFile(this)"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Transaction ID / UTR (12 Digits)
-                </label>
-
-                <input
-                    type="text"
-                    id="utrInput"
-                    placeholder="Enter UTR Number"
-                >
-
-            </div>
-
-
-            <button class="btn" onclick="processInjection()">
-                Submit & Inject Bot
-            </button>
-
+            <span class="bot-price">
+                ₹450
+            </span>
         </div>
 
-
-        <!-- STEP 4 -->
-        <div id="step4" class="step">
-
-            <div class="step-title">
-                <i class="fa-solid fa-terminal"></i>
-                Injecting Bot Data
-            </div>
-
-            <div class="terminal" id="terminalLog"></div>
-
+        <div class="bot-features">
+            • <strong>Runtime:</strong> 16 Hours Max<br>
+            • <strong>Speed:</strong> 2X Fast Speed<br>
+            • <strong>Protection:</strong> Advanced Protection
         </div>
 
+    </div>
 
-        <!-- STEP 5 -->
-        <div id="step5" class="step" style="text-align:center;">
+    <button class="btn" onclick="goToPayment()">
+        Proceed To Pay
+        <i class="fa-solid fa-qrcode"></i>
+    </button>
 
-            <i class="fa-solid fa-circle-check"
-               style="font-size:50px;color:var(--primary);margin-bottom:12px;">
+</div>
+
+
+<!-- STEP 3 PAYMENT -->
+<div id="step3" class="step">
+
+    <div class="step-title">
+        <i class="fa-solid fa-credit-card"></i>
+        Pay & Submit
+    </div>
+
+
+    <!-- QR CODE -->
+    <div class="qr-box">
+
+        <!-- IMPORTANT:
+             GitHub repository में image का exact नाम:
+             qr.jpg.jpeg
+        -->
+        <img src="qr.jpg.jpeg"
+             alt="UPI QR Code">
+
+        <p style="color:#000;font-size:11px;font-weight:800;margin-top:5px;">
+            Scan & Pay via UPI
+        </p>
+
+    </div>
+
+
+    <!-- SCREENSHOT UPLOAD -->
+    <div class="form-group">
+
+        <label>
+            Upload Payment Screenshot
+        </label>
+
+        <div class="upload-box"
+             onclick="document.getElementById('ssInput').click()">
+
+            <i class="fa-solid fa-cloud-arrow-up"
+               style="font-size:20px;color:var(--primary);">
             </i>
 
-            <h3 style="font-size:18px;margin-bottom:6px;">
-                PAYMENT VERIFIED!
-            </h3>
-
-            <p style="font-size:12px;color:var(--text-muted);margin-bottom:18px;">
-                Your Guild Bot Injection Has Been Activated Successfully.
+            <p id="uploadText"
+               style="font-size:11px;margin-top:5px;color:var(--text-muted);">
+                Click to choose Screenshot
             </p>
-
-            <a
-                href="https://youtube.com/@gw_pathshala"
-                target="_blank"
-                class="btn"
-                style="text-decoration:none;display:block;"
-            >
-                Return To Channel
-            </a>
 
         </div>
 
+        <input type="file"
+               id="ssInput"
+               accept="image/*"
+               style="display:none;"
+               onchange="handleFile(this)">
+
     </div>
+
+
+    <!-- UTR -->
+    <div class="form-group">
+
+        <label>
+            Transaction ID / UTR
+        </label>
+
+        <input type="text"
+               id="utrInput"
+               inputmode="numeric"
+               maxlength="20"
+               placeholder="Enter UTR / Transaction ID">
+
+    </div>
+
+
+    <button class="btn" onclick="processSubmission()">
+        Submit
+        <i class="fa-solid fa-paper-plane"></i>
+    </button>
+
+</div>
+
+
+<!-- STEP 4 -->
+<div id="step4" class="step">
+
+    <div class="step-title">
+        <i class="fa-solid fa-terminal"></i>
+        Processing
+    </div>
+
+    <div class="terminal" id="terminalLog"></div>
+
+</div>
+
+
+<!-- STEP 5 -->
+<div id="step5"
+     class="step"
+     style="text-align:center;">
+
+    <i class="fa-solid fa-circle-check"
+       style="font-size:50px;color:var(--primary);margin-bottom:12px;">
+    </i>
+
+    <h3 style="font-size:18px;margin-bottom:8px;">
+        SUBMISSION RECEIVED
+    </h3>
+
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:18px;">
+        Your payment details have been submitted for verification.
+    </p>
+
+    <a href="https://youtube.com/@gw_pathshala"
+       target="_blank"
+       class="btn"
+       style="text-decoration:none;display:block;">
+        Return To Channel
+    </a>
+
+</div>
+
+</div>
 </div>
 
 
 <script>
 
-    /* MATRIX BACKGROUND */
+/* MATRIX BACKGROUND */
 
-    const canvas = document.getElementById('matrixBg');
-    const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("matrixBg");
+const ctx = canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    const alphabet = '01'.split('');
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const rainDrops = Array(Math.floor(columns)).fill(1);
+const alphabet = "01".split("");
+const fontSize = 14;
+const columns = canvas.width / fontSize;
 
-    setInterval(() => {
+const rainDrops =
+    Array(Math.floor(columns)).fill(1);
 
-        ctx.fillStyle = 'rgba(3, 7, 18, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+setInterval(() => {
 
-        ctx.fillStyle = '#00ff66';
-        ctx.font = fontSize + 'px monospace';
+    ctx.fillStyle = "rgba(3,7,18,.1)";
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-        for (let i = 0; i < rainDrops.length; i++) {
+    ctx.fillStyle = "#00ff66";
+    ctx.font = fontSize + "px monospace";
 
-            const text =
-                alphabet[Math.floor(Math.random() * alphabet.length)];
+    for(let i = 0; i < rainDrops.length; i++){
 
-            ctx.fillText(
-                text,
-                i * fontSize,
-                rainDrops[i] * fontSize
+        const text =
+            alphabet[
+                Math.floor(
+                    Math.random() * alphabet.length
+                )
+            ];
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            rainDrops[i] * fontSize
+        );
+
+        if(
+            rainDrops[i] * fontSize > canvas.height &&
+            Math.random() > .975
+        ){
+            rainDrops[i] = 0;
+        }
+
+        rainDrops[i]++;
+    }
+
+},33);
+
+
+/* SOUND */
+
+function playSubmitSound(){
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if(!AudioContext) return;
+
+    const audioCtx = new AudioContext();
+
+    const oscillator =
+        audioCtx.createOscillator();
+
+    const gain =
+        audioCtx.createGain();
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.setValueAtTime(
+        700,
+        audioCtx.currentTime
+    );
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+        1100,
+        audioCtx.currentTime + .12
+    );
+
+    gain.gain.setValueAtTime(
+        .25,
+        audioCtx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .01,
+        audioCtx.currentTime + .25
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioCtx.currentTime + .25
+    );
+}
+
+
+/* BOT */
+
+let selectedBot = "SUPER BOT";
+let selectedPrice = 239;
+
+function selectBot(element,name,price){
+
+    document
+        .querySelectorAll(".bot-card")
+        .forEach(card =>
+            card.classList.remove("selected")
+        );
+
+    element.classList.add("selected");
+
+    selectedBot = name;
+    selectedPrice = price;
+}
+
+
+/* STEP 1 */
+
+function goToStep2(){
+
+    const uid =
+        document.getElementById("guildUid").value;
+
+    const level =
+        document.getElementById("guildLevel").value;
+
+    const region =
+        document.getElementById("region").value;
+
+    if(!uid || uid.length < 5){
+
+        alert("Please enter valid Guild UID!");
+        return;
+    }
+
+    if(!level){
+
+        alert("Please enter Guild Level!");
+        return;
+    }
+
+    if(!region){
+
+        alert("Please select Region!");
+        return;
+    }
+
+    document
+        .getElementById("step1")
+        .classList.remove("active");
+
+    document
+        .getElementById("step2")
+        .classList.add("active");
+}
+
+
+/* PAYMENT */
+
+function goToPayment(){
+
+    document
+        .getElementById("step2")
+        .classList.remove("active");
+
+    document
+        .getElementById("step3")
+        .classList.add("active");
+}
+
+
+/* SCREENSHOT */
+
+function handleFile(input){
+
+    if(input.files && input.files[0]){
+
+        document
+            .getElementById("uploadText")
+            .innerText =
+            "Selected: " + input.files[0].name;
+
+        document
+            .getElementById("uploadText")
+            .style.color =
+            "#00ff66";
+    }
+}
+
+
+/* SUBMIT */
+
+function processSubmission(){
+
+    const utr =
+        document.getElementById("utrInput").value.trim();
+
+    const screenshot =
+        document.getElementById("ssInput").files[0];
+
+
+    if(!screenshot){
+
+        alert("Please upload your payment screenshot!");
+        return;
+    }
+
+    if(!utr || utr.length < 6){
+
+        alert("Please enter a valid UTR / Transaction ID!");
+        return;
+    }
+
+
+    /* Sound after submission */
+
+    playSubmitSound();
+
+
+    document
+        .getElementById("step3")
+        .classList.remove("active");
+
+    document
+        .getElementById("step4")
+        .classList.add("active");
+
+
+    runTerminal();
+}
+
+
+/* TERMINAL */
+
+function runTerminal(){
+
+    const log =
+        document.getElementById("terminalLog");
+
+    const uid =
+        document.getElementById("guildUid").value;
+
+
+    const lines = [
+
+        "[SYSTEM] Submission received...",
+
+        "[INFO] Checking submitted details...",
+
+        "[INFO] Package: " +
+        selectedBot +
+        " (₹" +
+        selectedPrice +
+        ")",
+
+        "[INFO] Guild UID: " + uid,
+
+        "[INFO] Payment details submitted.",
+
+        "[STATUS] Awaiting payment verification..."
+    ];
+
+
+    let i = 0;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GW PATHSHALA - VIP GUILD BOT</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root {
+    --primary: #00ff66;
+    --primary-glow: rgba(0,255,102,.4);
+    --accent: #ffcc00;
+    --bg-dark: #030712;
+    --card-bg: rgba(15,23,42,.85);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255,255,255,.12);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+#matrixBg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: .2;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.header-box {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.brand-badge {
+    background: linear-gradient(135deg,var(--primary),#00cc52);
+    color: #000;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.main-title {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(to right,#fff,var(--primary),#fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.8);
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+    animation: fadeIn .3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-title {
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(5,10,20,.9);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 12px var(--primary-glow);
+}
+
+.bot-card {
+    background: rgba(10,15,30,.6);
+    border: 2px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 14px;
+    cursor: pointer;
+}
+
+.bot-card.selected {
+    border-color: var(--primary);
+    background: rgba(0,255,102,.08);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.bot-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.bot-name {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.bot-price {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--accent);
+}
+
+.bot-features {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg,var(--primary),#00cc52);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 5px 20px var(--primary-glow);
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.qr-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    width: 220px;
+    margin: 0 auto 18px;
+    text-align: center;
+}
+
+.qr-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.upload-box {
+    border: 2px dashed var(--border-color);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(0,0,0,.3);
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.terminal {
+    background: #000;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--primary);
+    height: 200px;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrixBg"></canvas>
+
+<div class="container">
+
+<div class="header-box">
+    <span class="brand-badge">GW PATHSHALA VIP</span>
+    <div class="main-title">GUILD GLORY BOT</div>
+</div>
+
+<div class="card">
+
+<!-- STEP 1 -->
+<div id="step1" class="step active">
+
+    <div class="step-title">
+        <i class="fa-solid fa-shield-halved"></i>
+        Guild Details
+    </div>
+
+    <div class="form-group">
+        <label>Guild UID</label>
+        <input type="number"
+               id="guildUid"
+               placeholder="Enter Guild UID">
+    </div>
+
+    <div class="form-group">
+        <label>Guild Level</label>
+        <input type="number"
+               id="guildLevel"
+               placeholder="Enter Guild Level (1 - 6)">
+    </div>
+
+    <div class="form-group">
+        <label>Select Region</label>
+
+        <select id="region">
+            <option value="" disabled selected hidden>
+                Select Server Region
+            </option>
+            <option value="India">India</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Pakistan">Pakistan</option>
+        </select>
+    </div>
+
+    <button class="btn" onclick="goToStep2()">
+        Next: Select Bot
+        <i class="fa-solid fa-arrow-right"></i>
+    </button>
+
+</div>
+
+
+<!-- STEP 2 -->
+<div id="step2" class="step">
+
+    <div class="step-title">
+        <i class="fa-solid fa-robot"></i>
+        Select Bot Power
+    </div>
+
+    <div class="bot-card selected"
+         onclick="selectBot(this,'SUPER BOT',239)">
+
+        <div class="bot-top">
+            <span class="bot-name" style="color:#00ccff;">
+                SUPER BOT
+            </span>
+
+            <span class="bot-price">
+                ₹239
+            </span>
+        </div>
+
+        <div class="bot-features">
+            • <strong>Runtime:</strong> 7 to 8 Hours<br>
+            • <strong>Speed:</strong> Standard Glory Speed<br>
+            • <strong>Protection:</strong> Basic Protection
+        </div>
+
+    </div>
+
+    <div class="bot-card"
+         onclick="selectBot(this,'ULTRA SUPER BOT',450)">
+
+        <div class="bot-top">
+            <span class="bot-name" style="color:var(--primary);">
+                ULTRA SUPER BOT
+            </span>
+
+            <span class="bot-price">
+                ₹450
+            </span>
+        </div>
+
+        <div class="bot-features">
+            • <strong>Runtime:</strong> 16 Hours Max<br>
+            • <strong>Speed:</strong> 2X Fast Speed<br>
+            • <strong>Protection:</strong> Advanced Protection
+        </div>
+
+    </div>
+
+    <button class="btn" onclick="goToPayment()">
+        Proceed To Pay
+        <i class="fa-solid fa-qrcode"></i>
+    </button>
+
+</div>
+
+
+<!-- STEP 3 PAYMENT -->
+<div id="step3" class="step">
+
+    <div class="step-title">
+        <i class="fa-solid fa-credit-card"></i>
+        Pay & Submit
+    </div>
+
+
+    <!-- QR CODE -->
+    <div class="qr-box">
+
+        <!-- IMPORTANT:
+             GitHub repository में image का exact नाम:
+             qr.jpg.jpeg
+        -->
+        <img src="qr.jpg.jpeg"
+             alt="UPI QR Code">
+
+        <p style="color:#000;font-size:11px;font-weight:800;margin-top:5px;">
+            Scan & Pay via UPI
+        </p>
+
+    </div>
+
+
+    <!-- SCREENSHOT UPLOAD -->
+    <div class="form-group">
+
+        <label>
+            Upload Payment Screenshot
+        </label>
+
+        <div class="upload-box"
+             onclick="document.getElementById('ssInput').click()">
+
+            <i class="fa-solid fa-cloud-arrow-up"
+               style="font-size:20px;color:var(--primary);">
+            </i>
+
+            <p id="uploadText"
+               style="font-size:11px;margin-top:5px;color:var(--text-muted);">
+                Click to choose Screenshot
+            </p>
+
+        </div>
+
+        <input type="file"
+               id="ssInput"
+               accept="image/*"
+               style="display:none;"
+               onchange="handleFile(this)">
+
+    </div>
+
+
+    <!-- UTR -->
+    <div class="form-group">
+
+        <label>
+            Transaction ID / UTR
+        </label>
+
+        <input type="text"
+               id="utrInput"
+               inputmode="numeric"
+               maxlength="20"
+               placeholder="Enter UTR / Transaction ID">
+
+    </div>
+
+
+    <button class="btn" onclick="processSubmission()">
+        Submit
+        <i class="fa-solid fa-paper-plane"></i>
+    </button>
+
+</div>
+
+
+<!-- STEP 4 -->
+<div id="step4" class="step">
+
+    <div class="step-title">
+        <i class="fa-solid fa-terminal"></i>
+        Processing
+    </div>
+
+    <div class="terminal" id="terminalLog"></div>
+
+</div>
+
+
+<!-- STEP 5 -->
+<div id="step5"
+     class="step"
+     style="text-align:center;">
+
+    <i class="fa-solid fa-circle-check"
+       style="font-size:50px;color:var(--primary);margin-bottom:12px;">
+    </i>
+
+    <h3 style="font-size:18px;margin-bottom:8px;">
+        SUBMISSION RECEIVED
+    </h3>
+
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:18px;">
+        Your payment details have been submitted for verification.
+    </p>
+
+    <a href="https://youtube.com/@gw_pathshala"
+       target="_blank"
+       class="btn"
+       style="text-decoration:none;display:block;">
+        Return To Channel
+    </a>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+/* MATRIX BACKGROUND */
+
+const canvas = document.getElementById("matrixBg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const alphabet = "01".split("");
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+const rainDrops =
+    Array(Math.floor(columns)).fill(1);
+
+setInterval(() => {
+
+    ctx.fillStyle = "rgba(3,7,18,.1)";
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.fillStyle = "#00ff66";
+    ctx.font = fontSize + "px monospace";
+
+    for(let i = 0; i < rainDrops.length; i++){
+
+        const text =
+            alphabet[
+                Math.floor(
+                    Math.random() * alphabet.length
+                )
+            ];
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            rainDrops[i] * fontSize
+        );
+
+        if(
+            rainDrops[i] * fontSize > canvas.height &&
+            Math.random() > .975
+        ){
+            rainDrops[i] = 0;
+        }
+
+        rainDrops[i]++;
+    }
+
+},33);
+
+
+/* SOUND */
+
+function playSubmitSound(){
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if(!AudioContext) return;
+
+    const audioCtx = new AudioContext();
+
+    const oscillator =
+        audioCtx.createOscillator();
+
+    const gain =
+        audioCtx.createGain();
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.setValueAtTime(
+        700,
+        audioCtx.currentTime
+    );
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+        1100,
+        audioCtx.currentTime + .12
+    );
+
+    gain.gain.setValueAtTime(
+        .25,
+        audioCtx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .01,
+        audioCtx.currentTime + .25
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioCtx.currentTime + .25
+    );
+}
+
+
+/* BOT */
+
+let selectedBot = "SUPER BOT";
+let selectedPrice = 239;
+
+function selectBot(element,name,price){
+
+    document
+        .querySelectorAll(".bot-card")
+        .forEach(card =>
+            card.classList.remove("selected")
+        );
+
+    element.classList.add("selected");
+
+    selectedBot = name;
+    selectedPrice = price;
+}
+
+
+/* STEP 1 */
+
+function goToStep2(){
+
+    const uid =
+        document.getElementById("guildUid").value;
+
+    const level =
+        document.getElementById("guildLevel").value;
+
+    const region =
+        document.getElementById("region").value;
+
+    if(!uid || uid.length < 5){
+
+        alert("Please enter valid Guild UID!");
+        return;
+    }
+
+    if(!level){
+
+        alert("Please enter Guild Level!");
+        return;
+    }
+
+    if(!region){
+
+        alert("Please select Region!");
+        return;
+    }
+
+    document
+        .getElementById("step1")
+        .classList.remove("active");
+
+    document
+        .getElementById("step2")
+        .classList.add("active");
+}
+
+
+/* PAYMENT */
+
+function goToPayment(){
+
+    document
+        .getElementById("step2")
+        .classList.remove("active");
+
+    document
+        .getElementById("step3")
+        .classList.add("active");
+}
+
+
+/* SCREENSHOT */
+
+function handleFile(input){
+
+    if(input.files && input.files[0]){
+
+        document
+            .getElementById("uploadText")
+            .innerText =
+            "Selected: " + input.files[0].name;
+
+        document
+            .getElementById("uploadText")
+            .style.color =
+            "#00ff66";
+    }
+}
+
+
+/* SUBMIT */
+
+function processSubmission(){
+
+    const utr =
+        document.getElementById("utrInput").value.trim();
+
+    const screenshot =
+        document.getElementById("ssInput").files[0];
+
+
+    if(!screenshot){
+
+        alert("Please upload your payment screenshot!");
+        return;
+    }
+
+    if(!utr || utr.length < 6){
+
+        alert("Please enter a valid UTR / Transaction ID!");
+        return;
+    }
+
+
+    /* Sound after submission */
+
+    playSubmitSound();
+
+
+    document
+        .getElementById("step3")
+        .classList.remove("active");
+
+    document
+        .getElementById("step4")
+        .classList.add("active");
+
+
+    runTerminal();
+}
+
+
+/* TERMINAL */
+
+function runTerminal(){
+
+    const log =
+        document.getElementById("terminalLog");
+
+    const uid =
+        document.getElementById("guildUid").value;
+
+
+    const lines = [
+
+        "[SYSTEM] Submission received...",
+
+        "[INFO] Checking submitted details...",
+
+        "[INFO] Package: " +
+        selectedBot +
+        " (₹" +
+        selectedPrice +
+        ")",
+
+        "[INFO] Guild UID: " + uid,
+
+        "[INFO] Payment details submitted.",
+
+        "[STATUS] Awaiting payment verification..."
+    ];
+
+
+    let i = 0;
+
+
+    function printLine(){
+
+        if(i < lines.length){
+
+            log.innerHTML +=
+                "$ " + lines[i] + "<br>";
+
+            log.scrollTop =
+                log.scrollHeight;
+
+            i++;
+
+            setTimeout(
+                printLine,
+                600
             );
 
-            if (
-                rainDrops[i] * fontSize > canvas.height &&
-                Math.random() > 0.975
-            ) {
-                rainDrops[i] = 0;
-            }
+        }else{
 
-            rainDrops[i]++;
-        }
+            setTimeout(() => {
 
-    }, 33);
+                document
+                    .getElementById("step4")
+                    .classList.remove("active");
 
+                document
+                    .getElementById("step5")
+                    .classList.add("active");
 
-    /* AUDIO EFFECT */
-
-    function playTickSound() {
-
-        const audioCtx =
-            new (window.AudioContext || window.webkitAudioContext)();
-
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-
-        osc.type = 'sine';
-
-        osc.frequency.setValueAtTime(
-            800,
-            audioCtx.currentTime
-        );
-
-        osc.frequency.exponentialRampToValueAtTime(
-            400,
-            audioCtx.currentTime + 0.15
-        );
-
-        gain.gain.setValueAtTime(
-            0.3,
-            audioCtx.currentTime
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            0.01,
-            audioCtx.currentTime + 0.15
-        );
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.15);
-    }
-
-
-    let selectedBot = "SUPER BOT";
-    let selectedPrice = 239;
-
-
-    /* SELECT BOT */
-
-    function selectBot(element, name, price) {
-
-        document
-            .querySelectorAll('.bot-card')
-            .forEach(c => c.classList.remove('selected'));
-
-        element.classList.add('selected');
-
-        selectedBot = name;
-        selectedPrice = price;
-    }
-
-
-    /* STEP 1 -> STEP 2 */
-
-    function goToStep2() {
-
-        const uid =
-            document.getElementById('guildUid').value;
-
-        const level =
-            document.getElementById('guildLevel').value;
-
-        const region =
-            document.getElementById('region').value;
-
-
-        if (!uid || uid.length < 5) {
-            alert("Please enter valid Guild UID!");
-            return;
-        }
-
-        if (!level) {
-            alert("Please enter Guild Level!");
-            return;
-        }
-
-        if (!region) {
-            alert("Please select Region!");
-            return;
-        }
-
-
-        document
-            .getElementById('step1')
-            .classList.remove('active');
-
-        document
-            .getElementById('step2')
-            .classList.add('active');
-    }
-
-
-    /* STEP 2 -> STEP 3 */
-
-    function goToPayment() {
-
-        document
-            .getElementById('step2')
-            .classList.remove('active');
-
-        document
-            .getElementById('step3')
-            .classList.add('active');
-    }
-
-
-    /* SCREENSHOT */
-
-    function handleFile(input) {
-
-        if (input.files && input.files[0]) {
-
-            document
-                .getElementById('uploadText')
-                .innerText =
-                "Selected: " + input.files[0].name;
-
-            document
-                .getElementById('uploadText')
-                .style.color = "#00ff66";
+            },800);
         }
     }
 
+    printLine();
+}
 
-    /* PROCESS */
+</script>
 
-    function processInjection() {
+</body>
+</html>
+    function printLine(){
 
-        const utr =
-            document.getElementById('utrInput').value;
+        if(i < lines.length){
 
-        if (!utr || utr.length < 6) {
+            log.innerHTML +=
+                "$ " + lines[i] + "<br>";
 
-            alert(
-                "Please enter a valid Transaction ID / UTR!"
+            log.scrollTop =
+                log.scrollHeight;
+
+            i++;
+
+            setTimeout(
+                printLine,
+                600
             );
 
-            return;
+        }else{
+
+            setTimeout(() => {
+
+                document
+                    .getElementById("step4")
+                    .classList.remove("active");
+
+                document
+                    .getElementById("step5")
+                    .classList.add("active");
+
+            },800);
         }
-
-        playTickSound();
-
-
-        document
-            .getElementById('step3')
-            .classList.remove('active');
-
-        document
-            .getElementById('step4')
-            .classList.add('active');
-
-        runTerminal();
     }
 
-
-    /* TERMINAL */
-
-    function runTerminal() {
-
-        const log =
-            document.getElementById('terminalLog');
-
-        const uid =
-            document.getElementById('guildUid').value;
-
-
-        const lines = [
-
-            " [SYSTEM] Connecting to Free Fire Servers...",
-
-            " [AUTH] Payment UTR status: VERIFIED",
-
-            ` [INFO] Selected Package: ${selectedBot} (₹${selectedPrice})`,
-
-            ` [TARGET] Binding Guild UID: ${uid}`,
-
-            " [LOAD] Bypassing Security Protocols...",
-
-            " [INJECT] Injecting Glory Boost Packets...",
-
-            " [SUCCESS] Session Token Generated!",
-
-            " [COMPLETE] Bot successfully bound to Guild!"
-        ];
-
-
-        let i = 0;
-
-
-        function printLine() {
-
-            if (i < lines.length) {
-
-                log.innerHTML +=
-                    "$ " + lines[i] + "<br>";
-
-                log.scrollTop =
-                    log.scrollHeight;
-
-                i++;
-
-                setTimeout(printLine, 600);
-
-            } else {
-
-                setTimeout(() => {
-
-                    document
-                        .getElementById('step4')
-                        .classList.remove('active');
-
-                    document
-                        .getElementById('step5')
-                        .classList.add('active');
-
-                }, 1000);
-            }
-        }
-
-
-        printLine();
-    }
+    printLine();
+}
 
 </script>
 
