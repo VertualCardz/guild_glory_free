@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GW PATHSHALA - VIP GUILD BOT</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
             --primary: #00ff66;
@@ -100,15 +102,25 @@
             margin-bottom: 20px;
         }
 
-        .step { display: none; }
+        .step {
+            display: none;
+        }
+
         .step.active {
             display: block;
             animation: fadeIn 0.3s ease-in-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .form-group {
@@ -124,7 +136,8 @@
             text-transform: uppercase;
         }
 
-        input, select {
+        input,
+        select {
             width: 100%;
             padding: 14px;
             background: rgba(5, 10, 20, 0.9);
@@ -136,7 +149,8 @@
             transition: 0.3s;
         }
 
-        input:focus, select:focus {
+        input:focus,
+        select:focus {
             border-color: var(--primary);
             box-shadow: 0 0 12px var(--primary-glow);
         }
@@ -165,8 +179,16 @@
             margin-bottom: 6px;
         }
 
-        .bot-name { font-size: 16px; font-weight: 900; }
-        .bot-price { font-size: 18px; font-weight: 900; color: var(--accent); }
+        .bot-name {
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .bot-price {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--accent);
+        }
 
         .bot-features {
             font-size: 12px;
@@ -203,6 +225,7 @@
             width: 100%;
             height: auto;
             border-radius: 6px;
+            display: block;
         }
 
         .upload-box {
@@ -229,35 +252,54 @@
         }
     </style>
 </head>
+
 <body>
 
 <canvas id="matrixBg"></canvas>
 
 <div class="container">
+
     <div class="header-box">
         <span class="brand-badge">GW PATHSHALA VIP</span>
         <div class="main-title">GUILD GLORY BOT</div>
     </div>
 
     <div class="card">
-        <!-- STEP 1: GUILD INFO -->
+
+        <!-- STEP 1 -->
         <div id="step1" class="step active">
-            <div class="step-title"><i class="fa-solid fa-shield-halved"></i> Guild Details</div>
-            
+
+            <div class="step-title">
+                <i class="fa-solid fa-shield-halved"></i>
+                Guild Details
+            </div>
+
             <div class="form-group">
                 <label>Guild UID</label>
-                <input type="number" id="guildUid" placeholder="Enter Guild UID (e.g. 3012948122)">
+                <input
+                    type="number"
+                    id="guildUid"
+                    placeholder="Enter Guild UID (e.g. 3012948122)"
+                >
             </div>
 
             <div class="form-group">
                 <label>Guild Level</label>
-                <input type="number" id="guildLevel" placeholder="Enter Guild Level (1 - 6)">
+                <input
+                    type="number"
+                    id="guildLevel"
+                    placeholder="Enter Guild Level (1 - 6)"
+                >
             </div>
 
             <div class="form-group">
                 <label>Select Region</label>
+
                 <select id="region">
-                    <option value="" disabled selected hidden>Select Server Region</option>
+                    <option value="" disabled selected hidden>
+                        Select Server Region
+                    </option>
+
                     <option value="India">India</option>
                     <option value="Singapore">Singapore</option>
                     <option value="Bangladesh">Bangladesh</option>
@@ -265,207 +307,470 @@
                 </select>
             </div>
 
-            <button class="btn" onclick="goToStep2()">Next: Select Bot <i class="fa-solid fa-arrow-right"></i></button>
+            <button class="btn" onclick="goToStep2()">
+                Next: Select Bot
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
         </div>
 
-        <!-- STEP 2: CHOOSE PAID BOT -->
-        <div id="step2" class="step">
-            <div class="step-title"><i class="fa-solid fa-robot"></i> Select Bot Power</div>
 
-            <!-- SUPER BOT (₹239) -->
-            <div class="bot-card selected" onclick="selectBot(this, 'SUPER BOT', 239)">
+        <!-- STEP 2 -->
+        <div id="step2" class="step">
+
+            <div class="step-title">
+                <i class="fa-solid fa-robot"></i>
+                Select Bot Power
+            </div>
+
+            <div class="bot-card selected"
+                 onclick="selectBot(this, 'SUPER BOT', 239)">
+
                 <div class="bot-top">
-                    <span class="bot-name" style="color: #00ccff;">SUPER BOT</span>
-                    <span class="bot-price">₹239</span>
+                    <span class="bot-name" style="color:#00ccff;">
+                        SUPER BOT
+                    </span>
+
+                    <span class="bot-price">
+                        ₹239
+                    </span>
                 </div>
+
                 <div class="bot-features">
                     • <strong>Runtime:</strong> 7 to 8 Hours Continuous Injection<br>
                     • <strong>Speed:</strong> Standard Glory Speed<br>
                     • <strong>Protection:</strong> Basic Anti-Ban Active
                 </div>
+
             </div>
 
-            <!-- ULTRA SUPER BOT (₹450) -->
-            <div class="bot-card" onclick="selectBot(this, 'ULTRA SUPER BOT', 450)">
+
+            <div class="bot-card"
+                 onclick="selectBot(this, 'ULTRA SUPER BOT', 450)">
+
                 <div class="bot-top">
-                    <span class="bot-name" style="color: var(--primary);">ULTRA SUPER BOT</span>
-                    <span class="bot-price">₹450</span>
+                    <span class="bot-name" style="color:var(--primary);">
+                        ULTRA SUPER BOT
+                    </span>
+
+                    <span class="bot-price">
+                        ₹450
+                    </span>
                 </div>
+
                 <div class="bot-features">
                     • <strong>Runtime:</strong> 16 Hours Max (Double Power)<br>
                     • <strong>Speed:</strong> 2X Fast High-Speed Injection<br>
                     • <strong>Protection:</strong> Advanced VIP Anti-Ban Shield
                 </div>
+
             </div>
 
-            <button class="btn" onclick="goToPayment()">Proceed To Pay <i class="fa-solid fa-qrcode"></i></button>
+
+            <button class="btn" onclick="goToPayment()">
+                Proceed To Pay
+                <i class="fa-solid fa-qrcode"></i>
+            </button>
+
         </div>
 
-        <!-- STEP 3: PAYMENT PAGE -->
+
+        <!-- STEP 3 -->
         <div id="step3" class="step">
-            <div class="step-title"><i class="fa-solid fa-credit-card"></i> Pay & Activate</div>
-            
+
+            <div class="step-title">
+                <i class="fa-solid fa-credit-card"></i>
+                Pay & Activate
+            </div>
+
+
+            <!-- QR CODE -->
             <div class="qr-box">
-                <img src="qr-code.png" alt="Scan QR Code To Pay">
-                <p style="color: #000; font-size: 11px; font-weight: 800; margin-top: 5px;">Scan & Pay via UPI</p>
+
+                <!-- आपकी असली QR फोटो का नाम QR.png होना चाहिए -->
+                <img src="QR.png" alt="Scan QR Code To Pay">
+
+                <p style="color:#000; font-size:11px; font-weight:800; margin-top:5px;">
+                    Scan & Pay via UPI
+                </p>
+
             </div>
 
+
             <div class="form-group">
-                <label>Upload Payment Screenshot</label>
-                <div class="upload-box" onclick="document.getElementById('ssInput').click()">
-                    <i class="fa-solid fa-cloud-arrow-up" style="font-size: 20px; color: var(--primary);"></i>
-                    <p id="uploadText" style="font-size: 11px; margin-top: 4px; color: var(--text-muted);">Click to choose Screenshot</p>
+
+                <label>
+                    Upload Payment Screenshot
+                </label>
+
+                <div class="upload-box"
+                     onclick="document.getElementById('ssInput').click()">
+
+                    <i class="fa-solid fa-cloud-arrow-up"
+                       style="font-size:20px;color:var(--primary);">
+                    </i>
+
+                    <p id="uploadText"
+                       style="font-size:11px;margin-top:4px;color:var(--text-muted);">
+                        Click to choose Screenshot
+                    </p>
+
                 </div>
-                <input type="file" id="ssInput" accept="image/*" style="display: none;" onchange="handleFile(this)">
+
+                <input
+                    type="file"
+                    id="ssInput"
+                    accept="image/*"
+                    style="display:none;"
+                    onchange="handleFile(this)"
+                >
+
             </div>
+
 
             <div class="form-group">
-                <label>Transaction ID / UTR (12 Digits)</label>
-                <input type="text" id="utrInput" placeholder="Enter UTR Number">
+
+                <label>
+                    Transaction ID / UTR (12 Digits)
+                </label>
+
+                <input
+                    type="text"
+                    id="utrInput"
+                    placeholder="Enter UTR Number"
+                >
+
             </div>
 
-            <button class="btn" onclick="processInjection()">Submit & Inject Bot</button>
+
+            <button class="btn" onclick="processInjection()">
+                Submit & Inject Bot
+            </button>
+
         </div>
 
-        <!-- STEP 4: TERMINAL INJECTION -->
+
+        <!-- STEP 4 -->
         <div id="step4" class="step">
-            <div class="step-title"><i class="fa-solid fa-terminal"></i> Injecting Bot Data</div>
+
+            <div class="step-title">
+                <i class="fa-solid fa-terminal"></i>
+                Injecting Bot Data
+            </div>
+
             <div class="terminal" id="terminalLog"></div>
+
         </div>
 
-        <!-- STEP 5: SUCCESS CONFIRMATION -->
-        <div id="step5" class="step" style="text-align: center;">
-            <i class="fa-solid fa-circle-check" style="font-size: 50px; color: var(--primary); margin-bottom: 12px;"></i>
-            <h3 style="font-size: 18px; margin-bottom: 6px;">PAYMENT VERIFIED!</h3>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 18px;">Your Guild Bot Injection Has Been Activated Successfully.</p>
 
-            <a href="https://youtube.com/@gw_pathshala" target="_blank" class="btn" style="text-decoration: none; display: block;">Return To Channel</a>
+        <!-- STEP 5 -->
+        <div id="step5" class="step" style="text-align:center;">
+
+            <i class="fa-solid fa-circle-check"
+               style="font-size:50px;color:var(--primary);margin-bottom:12px;">
+            </i>
+
+            <h3 style="font-size:18px;margin-bottom:6px;">
+                PAYMENT VERIFIED!
+            </h3>
+
+            <p style="font-size:12px;color:var(--text-muted);margin-bottom:18px;">
+                Your Guild Bot Injection Has Been Activated Successfully.
+            </p>
+
+            <a
+                href="https://youtube.com/@gw_pathshala"
+                target="_blank"
+                class="btn"
+                style="text-decoration:none;display:block;"
+            >
+                Return To Channel
+            </a>
+
         </div>
+
     </div>
 </div>
 
+
 <script>
-    // Matrix Background Animation
+
+    /* MATRIX BACKGROUND */
+
     const canvas = document.getElementById('matrixBg');
     const ctx = canvas.getContext('2d');
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
     const alphabet = '01'.split('');
     const fontSize = 14;
     const columns = canvas.width / fontSize;
     const rainDrops = Array(Math.floor(columns)).fill(1);
 
     setInterval(() => {
+
         ctx.fillStyle = 'rgba(3, 7, 18, 0.1)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
         ctx.fillStyle = '#00ff66';
         ctx.font = fontSize + 'px monospace';
+
         for (let i = 0; i < rainDrops.length; i++) {
-            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+
+            const text =
+                alphabet[Math.floor(Math.random() * alphabet.length)];
+
+            ctx.fillText(
+                text,
+                i * fontSize,
+                rainDrops[i] * fontSize
+            );
+
+            if (
+                rainDrops[i] * fontSize > canvas.height &&
+                Math.random() > 0.975
+            ) {
                 rainDrops[i] = 0;
             }
+
             rainDrops[i]++;
         }
+
     }, 33);
 
-    // Audio Effect (Tick Sound using Web Audio API)
+
+    /* AUDIO EFFECT */
+
     function playTickSound() {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        const audioCtx =
+            new (window.AudioContext || window.webkitAudioContext)();
+
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
+
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.15);
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+
+        osc.frequency.setValueAtTime(
+            800,
+            audioCtx.currentTime
+        );
+
+        osc.frequency.exponentialRampToValueAtTime(
+            400,
+            audioCtx.currentTime + 0.15
+        );
+
+        gain.gain.setValueAtTime(
+            0.3,
+            audioCtx.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.01,
+            audioCtx.currentTime + 0.15
+        );
+
         osc.connect(gain);
         gain.connect(audioCtx.destination);
+
         osc.start();
         osc.stop(audioCtx.currentTime + 0.15);
     }
 
+
     let selectedBot = "SUPER BOT";
     let selectedPrice = 239;
 
+
+    /* SELECT BOT */
+
     function selectBot(element, name, price) {
-        document.querySelectorAll('.bot-card').forEach(c => c.classList.remove('selected'));
+
+        document
+            .querySelectorAll('.bot-card')
+            .forEach(c => c.classList.remove('selected'));
+
         element.classList.add('selected');
+
         selectedBot = name;
         selectedPrice = price;
     }
 
+
+    /* STEP 1 -> STEP 2 */
+
     function goToStep2() {
-        const uid = document.getElementById('guildUid').value;
-        const level = document.getElementById('guildLevel').value;
-        const region = document.getElementById('region').value;
 
-        if(!uid || uid.length < 5) { alert("Please enter valid Guild UID!"); return; }
-        if(!level) { alert("Please enter Guild Level!"); return; }
-        if(!region) { alert("Please select Region!"); return; }
+        const uid =
+            document.getElementById('guildUid').value;
 
-        document.getElementById('step1').classList.remove('active');
-        document.getElementById('step2').classList.add('active');
-    }
+        const level =
+            document.getElementById('guildLevel').value;
 
-    function goToPayment() {
-        document.getElementById('step2').classList.remove('active');
-        document.getElementById('step3').classList.add('active');
-    }
+        const region =
+            document.getElementById('region').value;
 
-    function handleFile(input) {
-        if(input.files && input.files[0]) {
-            document.getElementById('uploadText').innerText = "Selected: " + input.files[0].name;
-            document.getElementById('uploadText').style.color = "#00ff66";
-        }
-    }
 
-    function processInjection() {
-        const utr = document.getElementById('utrInput').value;
-        if(!utr || utr.length < 6) {
-            alert("Please enter a valid Transaction ID / UTR!");
+        if (!uid || uid.length < 5) {
+            alert("Please enter valid Guild UID!");
             return;
         }
 
-        // Play Tick Audio Effect
+        if (!level) {
+            alert("Please enter Guild Level!");
+            return;
+        }
+
+        if (!region) {
+            alert("Please select Region!");
+            return;
+        }
+
+
+        document
+            .getElementById('step1')
+            .classList.remove('active');
+
+        document
+            .getElementById('step2')
+            .classList.add('active');
+    }
+
+
+    /* STEP 2 -> STEP 3 */
+
+    function goToPayment() {
+
+        document
+            .getElementById('step2')
+            .classList.remove('active');
+
+        document
+            .getElementById('step3')
+            .classList.add('active');
+    }
+
+
+    /* SCREENSHOT */
+
+    function handleFile(input) {
+
+        if (input.files && input.files[0]) {
+
+            document
+                .getElementById('uploadText')
+                .innerText =
+                "Selected: " + input.files[0].name;
+
+            document
+                .getElementById('uploadText')
+                .style.color = "#00ff66";
+        }
+    }
+
+
+    /* PROCESS */
+
+    function processInjection() {
+
+        const utr =
+            document.getElementById('utrInput').value;
+
+        if (!utr || utr.length < 6) {
+
+            alert(
+                "Please enter a valid Transaction ID / UTR!"
+            );
+
+            return;
+        }
+
         playTickSound();
 
-        document.getElementById('step3').classList.remove('active');
-        document.getElementById('step4').classList.add('active');
+
+        document
+            .getElementById('step3')
+            .classList.remove('active');
+
+        document
+            .getElementById('step4')
+            .classList.add('active');
+
         runTerminal();
     }
 
+
+    /* TERMINAL */
+
     function runTerminal() {
-        const log = document.getElementById('terminalLog');
-        const uid = document.getElementById('guildUid').value;
+
+        const log =
+            document.getElementById('terminalLog');
+
+        const uid =
+            document.getElementById('guildUid').value;
+
+
         const lines = [
+
             " [SYSTEM] Connecting to Free Fire Servers...",
+
             " [AUTH] Payment UTR status: VERIFIED",
+
             ` [INFO] Selected Package: ${selectedBot} (₹${selectedPrice})`,
+
             ` [TARGET] Binding Guild UID: ${uid}`,
+
             " [LOAD] Bypassing Security Protocols...",
+
             " [INJECT] Injecting Glory Boost Packets...",
+
             " [SUCCESS] Session Token Generated!",
+
             " [COMPLETE] Bot successfully bound to Guild!"
         ];
 
+
         let i = 0;
+
+
         function printLine() {
-            if(i < lines.length) {
-                log.innerHTML += "$ " + lines[i] + "<br>";
-                log.scrollTop = log.scrollHeight;
+
+            if (i < lines.length) {
+
+                log.innerHTML +=
+                    "$ " + lines[i] + "<br>";
+
+                log.scrollTop =
+                    log.scrollHeight;
+
                 i++;
+
                 setTimeout(printLine, 600);
+
             } else {
+
                 setTimeout(() => {
-                    document.getElementById('step4').classList.remove('active');
-                    document.getElementById('step5').classList.add('active');
+
+                    document
+                        .getElementById('step4')
+                        .classList.remove('active');
+
+                    document
+                        .getElementById('step5')
+                        .classList.add('active');
+
                 }, 1000);
             }
         }
+
+
         printLine();
     }
+
 </script>
+
 </body>
 </html>
