@@ -1,301 +1,613 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GW PATHSHALA VIP</title>
+<meta name="theme-color" content="#030712">
+<title>FF GLORY BOT</title>
 
 <style>
 *{box-sizing:border-box}
+
+:root{
+  --green:#00ff79;
+  --bg:#030712;
+  --card:#091421;
+  --border:#203548;
+  --muted:#9aabc0;
+}
+
 body{
-margin:0;
-background:#030712;
-color:#fff;
-font-family:Arial,sans-serif
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(ellipse at top,#103426 0%,#030712 55%);
+  color:#fff;
+  font-family:Arial,sans-serif;
 }
+
 .box{
-max-width:500px;
-margin:auto;
-padding:20px
+  max-width:480px;
+  margin:auto;
+  padding:22px 14px;
 }
+
 .card{
-background:#07111c;
-border:1px solid #00ff66;
-border-radius:16px;
-padding:20px
+  background:rgba(8,17,29,.97);
+  border:1px solid #234d39;
+  border-radius:22px;
+  padding:23px 19px;
+  box-shadow:0 20px 60px #0008;
 }
-h1,h2{
-text-align:center;
-color:#00ff66
+
+.brand{text-align:center;margin-bottom:28px}
+
+.logo{
+  width:65px;height:65px;
+  margin:0 auto 14px;
+  display:grid;place-items:center;
+  border:1px solid var(--green);
+  border-radius:19px;
+  background:#0b291b;
+  color:var(--green);
+  font-size:27px;font-weight:900;
+  box-shadow:0 0 25px #00ff7920;
 }
-input,select,button{
-width:100%;
-padding:14px;
-margin:8px 0;
-border-radius:8px;
-font-size:16px
+
+h1{
+  margin:0;
+  font-size:26px;
+  letter-spacing:1.4px;
+  color:var(--green);
 }
-input,select{
-background:#030712;
-color:white;
-border:1px solid #345
+
+.tagline{
+  margin-top:8px;
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:2px;
 }
-button{
-background:#00ff66;
-border:0;
-font-weight:bold;
-cursor:pointer
+
+h2{
+  text-align:center;
+  font-size:21px;
+  margin:8px 0 22px;
 }
+
 .step{display:none}
-.step.active{display:block}
+.step.active{display:block;animation:appear .3s ease}
+
+@keyframes appear{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+input,select,button{
+  width:100%;
+  padding:15px;
+  margin:8px 0;
+  border-radius:11px;
+  font-size:15px;
+}
+
+input,select{
+  background:#030a13;
+  color:#fff;
+  border:1px solid var(--border);
+  outline:none;
+}
+
+input:focus,select:focus{border-color:var(--green)}
+input::placeholder{color:#8191a4}
+
+button{
+  background:var(--green);
+  color:#031009;
+  border:0;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+button:hover{filter:brightness(1.08)}
+button:active{transform:scale(.99)}
+
+.secondary{
+  background:#111e2c;
+  color:var(--green);
+  border:1px solid var(--border);
+}
+
 .bot{
-border:1px solid #345;
-padding:18px;
-margin:10px 0;
-border-radius:10px;
-text-align:center;
-cursor:pointer
+  position:relative;
+  padding:22px 16px;
+  margin:13px 0;
+  background:#050d17;
+  border:1px solid var(--border);
+  border-radius:15px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s;
 }
-.bot.selected{border-color:#00ff66}
+
+.bot.selected,.bot:hover{
+  border-color:var(--green);
+  background:#0b2118;
+}
+
+.bot-name{font-size:16px;font-weight:800}
+.price{font-size:29px;font-weight:900;color:var(--green);margin:12px 0 5px}
+.bot-note{font-size:12px;color:var(--muted)}
+
+.bot.selected:after{
+  content:"✓ SELECTED";
+  display:inline-block;
+  margin-top:12px;
+  color:var(--green);
+  font-size:11px;
+  font-weight:bold;
+}
+
 .qr{
-width:220px;
-display:block;
-margin:20px auto
+  width:220px;
+  max-width:100%;
+  display:block;
+  margin:22px auto;
+  padding:6px;
+  border-radius:12px;
+  background:#fff;
 }
+
+.note{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  text-align:center;
+}
+
+.support{
+  display:block;
+  padding:15px;
+  margin-top:19px;
+  border-radius:12px;
+  background:#10271e;
+  border:1px solid #28543d;
+  color:var(--green);
+  text-align:center;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+  transition:.2s;
+}
+
+.support:hover{background:#163629}
+
+.footer{
+  text-align:center;
+  margin-top:23px;
+  color:#728398;
+  font-size:11px;
+}
+
+/* Professional submission screen */
+
+.success-wrap{
+  text-align:center;
+  padding:12px 0 8px;
+}
+
+.success-icon{
+  width:100px;
+  height:100px;
+  margin:10px auto 23px;
+  border-radius:50%;
+  background:#0c2c1b;
+  border:2px solid var(--green);
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 35px #00ff7925;
+  animation:pop .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.success-icon svg{
+  width:54px;
+  height:54px;
+  stroke:var(--green);
+  stroke-width:4;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.check-path{
+  stroke-dasharray:55;
+  stroke-dashoffset:55;
+  animation:draw .5s .2s ease forwards;
+}
+
+@keyframes pop{
+  0%{transform:scale(.5);opacity:0}
+  75%{transform:scale(1.1)}
+  100%{transform:scale(1);opacity:1}
+}
+
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.success-title{
+  font-size:25px;
+  font-weight:900;
+  color:var(--green);
+  margin-bottom:12px;
+}
+
+.success-subtitle{
+  color:#d1dbe5;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.receipt{
+  margin:23px 0 12px;
+  padding:17px;
+  background:#040c15;
+  border:1px solid var(--border);
+  border-radius:13px;
+  text-align:left;
+}
+
+.receipt-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid #1b2a39;
+  font-size:13px;
+}
+
+.receipt-row:last-child{border-bottom:0}
+.receipt-label{color:var(--muted)}
+.receipt-value{text-align:right;overflow-wrap:anywhere;font-weight:bold}
+
+.status{
+  display:inline-block;
+  padding:7px 12px;
+  border:1px solid #78612a;
+  background:#28200b;
+  color:#ffd76a;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:bold;
+  margin:14px 0;
+}
+
 #terminal{
-background:#000;
-color:#00ff66;
-padding:15px;
-min-height:150px;
-font-family:monospace;
-line-height:1.7
+  background:#000;
+  color:var(--green);
+  padding:16px;
+  min-height:145px;
+  border:1px solid #204b35;
+  border-radius:12px;
+  font:13px/1.9 monospace;
+  overflow-wrap:anywhere;
+}
+
+@media(max-width:380px){
+  .card{padding:20px 14px}
+  h1{font-size:23px}
 }
 </style>
 </head>
 
 <body>
-
 <div class="box">
 <div class="card">
 
+<header class="brand">
+  <div class="logo">FF</div>
+  <h1>FF GLORY BOT</h1>
+  <div class="tagline">GUILD BOT SERVICE</div>
+</header>
+
+<!-- STEP 1 -->
 <div id="step1" class="step active">
+  <h2>Guild Information</h2>
 
-<h1>GW PATHSHALA VIP</h1>
-<h2>Guild Information</h2>
+  <input id="guildUid" type="text"
+    placeholder="Enter Guild UID">
 
-<input id="guildUid" type="text" placeholder="Enter Guild UID">
+  <input id="guildLevel" type="number"
+    min="1" placeholder="Enter Guild Level">
 
-<input id="guildLevel" type="number" placeholder="Enter Guild Level">
+  <select id="guildRegion">
+    <option value="">Select Region</option>
+    <option value="India">India</option>
+    <option value="Brazil">Brazil</option>
+    <option value="Bangladesh">Bangladesh</option>
+    <option value="Singapore">Singapore</option>
+  </select>
 
-<select id="guildRegion">
-<option value="">Select Region</option>
-<option value="India">India</option>
-<option value="Brazil">Brazil</option>
-<option value="Bangladesh">Bangladesh</option>
-<option value="Singapore">Singapore</option>
-</select>
-
-<button onclick="go2()">CONTINUE →</button>
-
+  <button onclick="go2()">CONTINUE →</button>
 </div>
 
-
+<!-- STEP 2 -->
 <div id="step2" class="step">
+  <h2>Select Your Bot</h2>
 
-<h2>Select Bot</h2>
+  <div id="bot1" class="bot" onclick="chooseBot(1)">
+    <div class="bot-name">SUPER BOT</div>
+    <div class="price">₹199</div>
+    <div class="bot-note">Choose your plan</div>
+  </div>
 
-<div id="bot1" class="bot" onclick="chooseBot(1)">
-SUPER BOT<br><br>
-₹239
+  <div id="bot2" class="bot" onclick="chooseBot(2)">
+    <div class="bot-name">ULTRA SUPER BOT</div>
+    <div class="price">₹399</div>
+    <div class="bot-note">Choose your plan</div>
+  </div>
+
+  <button onclick="go3()">CONTINUE TO PAYMENT →</button>
+  <button class="secondary" onclick="show(1)">← BACK</button>
 </div>
 
-<div id="bot2" class="bot" onclick="chooseBot(2)">
-ULTRA SUPER BOT<br><br>
-₹450
-</div>
-
-<button onclick="go3()">PAYMENT →</button>
-
-<button onclick="show(1)" style="background:#122019;color:#00ff66">
-← BACK
-</button>
-
-</div>
-
-
+<!-- STEP 3 -->
 <div id="step3" class="step">
+  <h2>Complete Payment</h2>
 
-<h2>Payment</h2>
+  <!-- Existing QR image path unchanged -->
+  <img src="qr.jpg.jpeg" class="qr" alt="Payment QR Code">
 
-<img src="qr.jpg.jpeg" class="qr">
+  <p class="note">
+    Scan the QR code using your payment app.<br>
+    After paying, upload your payment screenshot.
+  </p>
 
-<p style="text-align:center">
-Scan QR & Pay
-</p>
+  <input id="paymentScreenshot" type="file"
+    accept="image/*">
 
-<input
-id="paymentScreenshot"
-type="file"
-accept="image/*"
->
+  <button onclick="submitPayment()">
+    SUBMIT PAYMENT ✓
+  </button>
 
-<button onclick="submitPayment()">
-SUBMIT PAYMENT ✓
-</button>
-
-<button onclick="show(2)" style="background:#122019;color:#00ff66">
-← BACK
-</button>
-
+  <button class="secondary" onclick="show(2)">← BACK</button>
 </div>
 
-
+<!-- STEP 4 -->
 <div id="step4" class="step">
-
-<h2>Processing...</h2>
-
-<div id="terminal"></div>
-
+  <h2>Submitting Request</h2>
+  <div id="terminal"></div>
+  <p class="note">Please wait while your request is processed.</p>
 </div>
 
-
+<!-- STEP 5 -->
 <div id="step5" class="step">
 
-<h2>✓ SUCCESS</h2>
+  <div class="success-wrap">
 
-<p style="text-align:center">
-Payment screenshot submitted successfully.
-</p>
+    <div class="success-icon">
+      <svg viewBox="0 0 52 52" aria-label="Success">
+        <path class="check-path" d="M11 27 L22 38 L42 15"/>
+      </svg>
+    </div>
 
-<p id="result" style="text-align:center;color:#00ff66"></p>
+    <div class="success-title">SUBMITTED SUCCESSFULLY!</div>
 
-<button onclick="location.reload()">
-DONE
-</button>
+    <div class="success-subtitle">
+      Your payment screenshot has been received in this session.<br>
+      Payment verification may still be required.
+    </div>
 
+    <div class="status">● AWAITING VERIFICATION</div>
+
+  </div>
+
+  <div class="receipt">
+    <div class="receipt-row">
+      <span class="receipt-label">Guild UID</span>
+      <span class="receipt-value" id="resultUid">—</span>
+    </div>
+
+    <div class="receipt-row">
+      <span class="receipt-label">Region</span>
+      <span class="receipt-value" id="resultRegion">—</span>
+    </div>
+
+    <div class="receipt-row">
+      <span class="receipt-label">Selected Plan</span>
+      <span class="receipt-value" id="resultBot">—</span>
+    </div>
+
+    <div class="receipt-row">
+      <span class="receipt-label">Amount</span>
+      <span class="receipt-value" id="resultPrice">—</span>
+    </div>
+
+    <div class="receipt-row">
+      <span class="receipt-label">Request Status</span>
+      <span class="receipt-value" style="color:#ffd76a">
+        Submitted
+      </span>
+    </div>
+  </div>
+
+  <a class="support"
+     href="http://t.me/Gw_pathshala_official"
+     target="_blank" rel="noopener noreferrer">
+    ✈ CONTACT CUSTOMER SUPPORT
+  </a>
+
+  <button onclick="location.reload()">DONE</button>
+
+  <p class="note">
+    Keep your payment reference available for verification.
+  </p>
+
+</div>
+
+<a class="support"
+   href="http://t.me/Gw_pathshala_official"
+   target="_blank" rel="noopener noreferrer">
+  ✈ CUSTOMER SUPPORT ON TELEGRAM
+</a>
+
+<div class="footer">
+  FF GLORY BOT · GUILD BOT SERVICE
 </div>
 
 </div>
 </div>
-
 
 <script>
-var selectedBot=0;
+var selectedBot = 0;
+var submitting = false;
 
 function show(n){
-document.querySelectorAll(".step").forEach(function(x){
-x.classList.remove("active");
-});
-document.getElementById("step"+n).classList.add("active");
+  document.querySelectorAll(".step").forEach(function(el){
+    el.classList.remove("active");
+  });
+  document.getElementById("step"+n).classList.add("active");
 }
 
 function go2(){
+  var uid = document.getElementById("guildUid").value.trim();
+  var level = document.getElementById("guildLevel").value.trim();
+  var region = document.getElementById("guildRegion").value;
 
-var uid=document.getElementById("guildUid").value.trim();
-var level=document.getElementById("guildLevel").value.trim();
-var region=document.getElementById("guildRegion").value;
+  if(!uid || !level || Number(level) < 1 || !region){
+    alert("Please enter valid guild details.");
+    return;
+  }
 
-if(uid===""||level===""||region===""){
-alert("Please fill all details");
-return;
-}
-
-show(2);
+  show(2);
 }
 
 function chooseBot(n){
+  selectedBot = n;
 
-selectedBot=n;
+  document.getElementById("bot1").classList.remove("selected");
+  document.getElementById("bot2").classList.remove("selected");
 
-document.getElementById("bot1").classList.remove("selected");
-document.getElementById("bot2").classList.remove("selected");
-
-document.getElementById("bot"+n).classList.add("selected");
+  document.getElementById("bot"+n).classList.add("selected");
 }
 
 function go3(){
+  if(!selectedBot){
+    alert("Please select a bot first.");
+    return;
+  }
 
-if(selectedBot===0){
-alert("Please select a bot");
-return;
+  show(3);
 }
 
-show(3);
-}
+/* Two-note confirmation chime.
+   This is an original synthesized sound, not Paytm's recording. */
+function playSuccessSound(){
+  try{
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return;
 
-function playSound(){
+    var ctx = new AC();
 
-var AC=window.AudioContext||window.webkitAudioContext;
+    function note(freq, start, duration){
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
 
-if(!AC)return;
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + start);
 
-var audio=new AC();
-var oscillator=audio.createOscillator();
-var gain=audio.createGain();
+      gain.gain.setValueAtTime(0.0001, ctx.currentTime + start);
+      gain.gain.exponentialRampToValueAtTime(
+        0.18, ctx.currentTime + start + 0.025
+      );
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001, ctx.currentTime + start + duration
+      );
 
-oscillator.frequency.value=800;
-gain.gain.value=0.2;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
 
-oscillator.connect(gain);
-gain.connect(audio.destination);
+      osc.start(ctx.currentTime + start);
+      osc.stop(ctx.currentTime + start + duration + 0.03);
+    }
 
-oscillator.start();
-oscillator.stop(audio.currentTime+0.25);
+    note(784, 0, 0.22);
+    note(1175, 0.13, 0.38);
+
+    setTimeout(function(){
+      ctx.close().catch(function(){});
+    }, 1000);
+
+  }catch(e){
+    // Audio may be unavailable in some browsers.
+  }
 }
 
 function submitPayment(){
+  if(submitting) return;
 
-var file=document.getElementById("paymentScreenshot").files[0];
+  var file = document.getElementById("paymentScreenshot").files[0];
 
-if(!file){
-alert("Payment screenshot upload karo");
-return;
-}
+  if(!file){
+    alert("Please upload your payment screenshot.");
+    return;
+  }
 
-playSound();
+  if(!file.type || !file.type.startsWith("image/")){
+    alert("Please select a valid image.");
+    return;
+  }
 
-show(4);
+  if(file.size > 8 * 1024 * 1024){
+    alert("Please choose an image smaller than 8 MB.");
+    return;
+  }
 
-var terminal=document.getElementById("terminal");
+  submitting = true;
 
-var logs=[
-"Starting system...",
-"Screenshot received...",
-"Processing...",
-"Request submitted...",
-"Completed!"
-];
+  var terminal = document.getElementById("terminal");
+  terminal.innerHTML = "";
 
-var i=0;
+  var logs = [
+    "Initializing request...",
+    "Screenshot selected...",
+    "Preparing submission...",
+    "Demo processing completed..."
+  ];
 
-function next(){
+  show(4);
 
-if(i>=logs.length){
+  var i = 0;
 
-setTimeout(function(){
+  function next(){
+    if(i >= logs.length){
+      setTimeout(function(){
+        document.getElementById("resultUid").textContent =
+          document.getElementById("guildUid").value.trim();
 
-var uid=document.getElementById("guildUid").value;
-var region=document.getElementById("guildRegion").value;
+        document.getElementById("resultRegion").textContent =
+          document.getElementById("guildRegion").value;
 
-document.getElementById("result").innerHTML=
-"Guild UID: "+uid+"<br>Region: "+region;
+        document.getElementById("resultBot").textContent =
+          selectedBot === 1 ? "SUPER BOT" : "ULTRA SUPER BOT";
 
-show(5);
+        document.getElementById("resultPrice").textContent =
+          selectedBot === 1 ? "₹199" : "₹399";
 
-},700);
+        show(5);
+        playSuccessSound();
+        submitting = false;
+      }, 500);
+      return;
+    }
 
-return;
-}
+    terminal.innerHTML +=
+      "✓ " + logs[i] + "<br>";
 
-terminal.innerHTML+=logs[i]+"<br>";
-i++;
+    i++;
+    setTimeout(next, 500);
+  }
 
-setTimeout(next,600);
-}
-
-next();
+  next();
 }
 </script>
-
 </body>
 </html>
